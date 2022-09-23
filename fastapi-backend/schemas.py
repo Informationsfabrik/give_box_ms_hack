@@ -32,20 +32,18 @@ class GiveBox(GiveBoxBase):
 
 
 class UserBase(BaseModel):
-    id: int
+    id: Optional[int]
     lastname: str
     firstname: str
 
 
 class User(UserBase):
     email: str
-    passwort: str
+    password: str
     street: str
     house_number: int
     zip_code: int
     city: str
-    giveboxes: List[GiveBox]
-
 
 class Comment(BaseModel):
     user: User
