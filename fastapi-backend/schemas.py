@@ -15,8 +15,7 @@ class GiveBoxBase(BaseModel):
 
 
 class GiveBox(GiveBoxBase):
-    last_checked: datetime
-    maintenance_needed: bool
+    last_confirmation_date: datetime
     maintainer_information: Optional[str]
     last_confirmation_date: datetime
     # maintainer

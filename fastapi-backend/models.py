@@ -24,7 +24,7 @@ user_givebox_association = Table(
     "user_givebox_association",
     Base.metadata,
     Column("user_id", ForeignKey("Users.id")),
-    Column("box_id", ForeignKey("Giveboxes.id")),
+    Column("box_id", ForeignKey("GiveBoxes.id")),
 )
 
 class User(Base):
@@ -35,10 +35,10 @@ class User(Base):
     firstname = Column(String)
     lastname = Column(String)
     address = Column(Integer, ForeignKey("Addresses.id"), nullable = False)
-    giveboxes = relationship("Givebox", secondary=user_givebox_association,back_populates="maintainer")
+    giveboxes = relationship("GiveBox", secondary=user_givebox_association,back_populates="maintainer")
 
-class Givebox(Base):
-    __tablename__ = "Giveboxes"
+class GiveBox(Base):
+    __tablename__ = "GiveBoxes"
     id = Column(Integer, primary_key=True, index=True)
     longitude = Column(Float)
     latitude = Column(Float)
