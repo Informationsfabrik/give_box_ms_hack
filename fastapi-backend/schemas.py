@@ -13,7 +13,7 @@ class GiveBoxBase(BaseModel):
     opening_hours: Optional[str]
     is_temporary: Optional[bool]
     extern_link: Optional[str]
-    content: Optional[str]
+    content: Optional[dict]
 
 
 class GiveBox(GiveBoxBase):

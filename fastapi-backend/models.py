@@ -30,6 +30,7 @@ class User(Base):
     house_number = Column(Integer)
     zip_code = Column(Integer)
     city = Column(String)
+    maintained_boxes = relationship("GiveBox", secondary=user_givebox_association, back_populates="maintainers")
 
 class GiveBox(Base):
     __tablename__ = "GiveBoxes"
@@ -44,9 +45,9 @@ class GiveBox(Base):
     maintainer_info = Column(String)
     maintenance_needed = Column(Boolean)
     image_id = Column(String)
-    content = Column(String)
+    content = Column(JSON)
     street = Column(String)
     house_number = Column(Integer)
     zip_code = Column(Integer)
     city = Column(String)
-    maintainers = relationship("User", secondary=user_givebox_association)
+    maintainers = relationship("User", secondary=user_givebox_association, back_populates="maintained_boxes")
