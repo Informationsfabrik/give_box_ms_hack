@@ -1,14 +1,21 @@
 from datetime import datetime
 from sqlite3 import Timestamp
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import Optional, List, Dict
 
+
+class Address(BaseModel):
+    id: int
+    street: str
+    house_number: int
+    zip_code: int
+    city: str
 
 class GiveBoxBase(BaseModel):
     id: Optional[int]
     longitude: float
     latitude: float
-    address_id: int
+    address: Address# Dict[str, any]
     is_temporary: bool
     description: str
     opening_hours: str
@@ -26,12 +33,6 @@ class GiveBox(GiveBoxBase):
 
 
 
-class Address(BaseModel):
-    id: int
-    street: str
-    house_number: int
-    zip_code: int
-    city: str
 
 
 class UserBase(BaseModel):

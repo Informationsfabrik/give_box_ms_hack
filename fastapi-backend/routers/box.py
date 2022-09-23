@@ -1,3 +1,4 @@
+from audioop import add
 import schemas
 import models
 from database import SessionLocal
@@ -8,6 +9,7 @@ from sqlalchemy.orm import Session
 from routers.utils import get_db
 import models
 import schemas
+from routers.addresses import get_givebox_by_id
 
 router = APIRouter()
 
@@ -18,9 +20,19 @@ def get_givebox_by_id(
 ) -> schemas.GiveBox:
     # Authorize.jwt_required()
 
-    box = db.query(models.GiveBox).filter(models.GiveBox.id == id_).first()
+    
+    db_box = db.query(models.GiveBox).filter(models.GiveBox.id == id_).first()
+    
+    box_dict = db_box.__dict__
+    
+    address_id = box_dict["address_id"]
+    address = db.query(models.Address).filter(models.Address.id == address_id).first()
+    box_dict["address"] = schemas.Address(**address.__dict__)   
 
-    return schemas.GiveBox(**box.__dict__)
+    box : schemas.GiveBox = schemas.GiveBox(**box_dict)
+    box.address = address#get_givebox_by_id(box.address_id, db, Authorize)
+
+    return box
 
 
 @router.get("/givebox")
