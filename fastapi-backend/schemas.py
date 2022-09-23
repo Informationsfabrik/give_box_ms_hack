@@ -1,11 +1,9 @@
 from datetime import datetime
-from sqlite3 import Timestamp
 from pydantic import BaseModel, Json
-from typing import Optional, List, Dict
+from typing import Optional
 
 
 class Content(BaseModel):
-    # {\"book\": true, \"clothes\": false, \"toys\": false, \"electronics\": false, \"other\": \"Besen, Kehrblech und co :)\"}
     book: Optional[bool]
     clothes: Optional[bool]
     toys: Optional[bool]
@@ -13,7 +11,7 @@ class Content(BaseModel):
     other: Optional[str]
 
 
-class GiveBoxBase(BaseModel):
+class GiveboxBase(BaseModel):
     id: Optional[int]
     longitude: float
     latitude: float
@@ -25,7 +23,7 @@ class GiveBoxBase(BaseModel):
     content: Optional[Content]
 
 
-class GiveBox(GiveBoxBase):
+class Givebox(GiveboxBase):
     maintenance_needed: Optional[bool]
     maintainer_info: Optional[str]
     last_confirmation_date: Optional[datetime]
@@ -34,9 +32,6 @@ class GiveBox(GiveBoxBase):
     house_number: Optional[int]
     zip_code: Optional[int]
     city: Optional[str]
-
-
-
 
 
 class UserBase(BaseModel):
@@ -53,8 +48,9 @@ class User(UserBase):
     zip_code: int
     city: str
 
+
 class Comment(BaseModel):
     user: User
-    box: GiveBox
+    box: Givebox
     text: str
     timestamp: datetime
