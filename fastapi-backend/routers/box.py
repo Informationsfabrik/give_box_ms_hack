@@ -13,7 +13,7 @@ router = APIRouter()
 def get_givebox_by_id(
     id_: int, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()
 ) -> schemas.GiveBox:
-    Authorize.jwt_required()
+    # Authorize.jwt_required()
 
     box = db.query(models.GiveBox).filter(models.GiveBox.id == id_).first()
 
@@ -24,7 +24,7 @@ def get_givebox_by_id(
 def get_givebox_list(
     db: Session = Depends(get_db), Authorize: AuthJWT = Depends()
 ) -> List[schemas.GiveBoxBase]:
-    Authorize.jwt_required()
+    # Authorize.jwt_required()
 
     box = db.query(models.Givebox)
 
