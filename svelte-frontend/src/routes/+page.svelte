@@ -1,5 +1,5 @@
 <script lang="ts">
-    import HelloWorldComponent from '$lib/HelloWorldComponent.svelte';
+    import HelloWorldComponent from '$lib/Home.svelte';
 </script>
 
 <!-- Tab Beschreibung -->
