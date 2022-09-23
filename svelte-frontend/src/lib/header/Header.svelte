@@ -1,125 +1,187 @@
-<script lang="ts">
-    import { page } from '$app/stores';
-</script>
 
-<header>
-    <div class="corner"></div>
-    <nav data-sveltekit-prefetch>
-        <svg viewBox="0 0 2 3" aria-hidden="true">
-            <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-        </svg>
-        <ul>
-            <li class:active={$page.url.pathname === '/'}>
-                <a href="/">Home</a>
-            </li>
-            <li class:active={$page.url.pathname === '/todos'}>
-                <a href="/todos">Todos</a>
-            </li>
-            <li class:active={$page.url.pathname === '/about'}>
-                <a href="/about">About</a>
-            </li>
-            <li class:active={$page.url.pathname === '/qr-codes'}>
-                <a href="/qr-codes">QR Codes</a>
-            </li>
-            <li class:active={$page.url.pathname === '/rules'}>
-                <a href="/rules">Rules</a>
-            </li>
-        </ul>
-        <svg viewBox="0 0 2 3" aria-hidden="true">
-            <path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-        </svg>
-    </nav>
-    <div class="corner">
-        <!-- TODO put something else here? github link? -->
+<script>
+    import { onMount } from "svelte";
+  
+    // Show mobile icon and display menu
+    let showMobileMenu = false;
+  
+    // List of navigation items
+    const navItems = [
+      { label: "logo", href: "#" },
+      { label: "Home", href: "/" },
+      { label: "Todos", href: "/todos" },
+      { label: "About", href: "/about" },
+      { label: "QR Codes", href: "/qr-codes" },
+      { label: "Rules", href: "/rules" },
+      { label: "Map", href: "/map" },
+    ];
+  
+    // Mobile menu click event handler
+    const handleMobileIconClick = () => (showMobileMenu = !showMobileMenu);
+  
+    // Media match query handler
+    const mediaQueryHandler = e => {
+      // Reset mobile state
+      if (!e.matches) {
+        showMobileMenu = false;
+      }
+    };
+  
+    // Attach media query listener on mount hook
+    onMount(() => {
+      const mediaListener = window.matchMedia("(max-width: 767px)");
+  
+      mediaListener.addListener(mediaQueryHandler);
+    });
+  </script>
+  
+  <nav>
+    <div class="inner">
+      <div on:click={handleMobileIconClick} class={`mobile-icon${showMobileMenu ? ' active' : ''}`}>
+        <div class="middle-line"></div>
+      </div>
+      <ul class={`navbar-list${showMobileMenu ? ' mobile' : ''}`}>
+        {#each navItems as item}
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        {/each}
+      </ul>
     </div>
-</header>
-
-<style>
-    header {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .corner {
-        width: 3em;
-        height: 3em;
-    }
-
-    /*.corner a {*/
-    /*    display: flex;*/
-    /*    align-items: center;*/
-    /*    justify-content: center;*/
-    /*    width: 100%;*/
-    /*    height: 100%;*/
-    /*}*/
-
-    /*.corner img {*/
-    /*    width: 2em;*/
-    /*    height: 2em;*/
-    /*    object-fit: contain;*/
-    /*}*/
-
+  </nav>
+  
+  <style>
     nav {
+      background-color: rgba(0, 0, 0, 0.8);
+      font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      height: 45px;
+    }
+  
+    .inner {
+      max-width: 980px;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin: auto;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  
+    .mobile-icon {
+      width: 25px;
+      height: 14px;
+      position: relative;
+      cursor: pointer;
+    }
+  
+    .mobile-icon:after,
+    .mobile-icon:before,
+    .middle-line {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.4s;
+      transform-origin: center;
+    }
+  
+    .mobile-icon:before,
+    .middle-line {
+      top: 0;
+    }
+  
+    .mobile-icon:after,
+    .middle-line {
+      bottom: 0;
+    }
+  
+    .mobile-icon:before {
+      width: 66%;
+    }
+  
+    .mobile-icon:after {
+      width: 33%;
+    }
+  
+    .middle-line {
+      margin: auto;
+    }
+  
+    .mobile-icon:hover:before,
+    .mobile-icon:hover:after,
+    .mobile-icon.active:before,
+    .mobile-icon.active:after,
+    .mobile-icon.active .middle-line {
+      width: 100%;
+    }
+  
+    .mobile-icon.active:before,
+    .mobile-icon.active:after {
+      top: 50%;
+      transform: rotate(-45deg);
+    }
+  
+    .mobile-icon.active .middle-line {
+      transform: rotate(45deg);
+    }
+  
+    .navbar-list {
+      display: none;
+      width: 100%;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0 40px;
+    }
+  
+    .navbar-list.mobile {
+      background-color: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      display: block;
+      height: calc(100% - 45px);
+      bottom: 0;
+      left: 0;
+    }
+  
+    .navbar-list li {
+      list-style-type: none;
+      position: relative;
+    }
+  
+    .navbar-list li:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #424245;
+    }
+  
+    .navbar-list a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      height: 45px;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 13px;
+    }
+  
+    @media only screen and (min-width: 767px) {
+      .mobile-icon {
+        display: none;
+      }
+  
+      .navbar-list {
         display: flex;
-        justify-content: center;
-        --background: rgba(255, 255, 255, 0.7);
-    }
-
-    svg {
-        width: 2em;
-        height: 3em;
-        display: block;
-    }
-
-    path {
-        fill: var(--background);
-    }
-
-    ul {
-        position: relative;
         padding: 0;
-        margin: 0;
-        height: 3em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        list-style: none;
-        background: var(--background);
-        background-size: contain;
+      }
+  
+      .navbar-list a {
+        display: inline-flex;
+      }
     }
-
-    li {
-        position: relative;
-        height: 100%;
-    }
-
-    li.active::before {
-        --size: 6px;
-        content: '';
-        width: 0;
-        height: 0;
-        position: absolute;
-        top: 0;
-        left: calc(50% - var(--size));
-        border: var(--size) solid transparent;
-        border-top: var(--size) solid var(--accent-color);
-    }
-
-    nav a {
-        display: flex;
-        height: 100%;
-        align-items: center;
-        padding: 0 1em;
-        color: var(--heading-color);
-        font-weight: 700;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        text-decoration: none;
-        transition: color 0.2s linear;
-    }
-
-    a:hover {
-        color: var(--accent-color);
-    }
-</style>
+  </style>
+  
