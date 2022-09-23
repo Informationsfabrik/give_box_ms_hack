@@ -17,6 +17,15 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 
+# origins = [
+#     "http://localhost", 
+#     "http://localhost:5713", 
+#     "http://127.0.0.1", 
+#     "http://127.0.0.1:5713", 
+#     "http://givebox-ms.de", 
+#     "https://givebox-ms.de"
+# ]
+
 origins = ["*"]
 
 app.add_middleware(
