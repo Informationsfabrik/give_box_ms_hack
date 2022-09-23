@@ -35,7 +35,7 @@ class User(Base):
     firstname = Column(String)
     lastname = Column(String)
     address = Column(Integer, ForeignKey("Addresses.id"), nullable = False)
-    giveboxes = relationship("Givebox", secondary=user_givebox_association,back_populates="maintainer")
+    giveboxes = relationship("GiveBox", secondary=user_givebox_association,back_populates="maintainer")
 
 class GiveBox(Base):
     __tablename__ = "GiveBoxes"
