@@ -8,16 +8,16 @@ class GiveBoxBase(BaseModel):
     id: Optional[int]
     longitude: float
     latitude: float
-    is_temporary: bool
-    description: str
-    opening_hours: str
-    is_temporary: bool
-    extern_link: str
-    content = str
+    is_temporary: Optional[bool]
+    description: Optional[str]
+    opening_hours: Optional[str]
+    is_temporary: Optional[bool]
+    extern_link: Optional[str]
+    content: Optional[str]
 
 
 class GiveBox(GiveBoxBase):
-    maintenance_needed: bool
+    maintenance_needed: Optional[bool]
     maintainer_info: Optional[str]
     last_confirmation_date: Optional[datetime]
     image_id: Optional[str]
