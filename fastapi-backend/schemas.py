@@ -17,15 +17,14 @@ class GiveBoxBase(BaseModel):
 
 
 class GiveBox(GiveBoxBase):
-    last_confirmation_date: datetime
     maintenance_needed: bool
     maintainer_info: Optional[str]
     last_confirmation_date: Optional[datetime]
-    image_id: str
-    street: str
-    house_number: int
-    zip_code: int
-    city: str
+    image_id: Optional[str]
+    street: Optional[str]
+    house_number: Optional[int]
+    zip_code: Optional[int]
+    city: Optional[str]
 
 
 
