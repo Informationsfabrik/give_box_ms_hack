@@ -1,5 +1,8 @@
 version: '3'
 
+volumes:
+  data:
+
 services:
   reverse-proxy:
     # The official v2 Traefik docker image
@@ -35,13 +38,15 @@ services:
   frontend:
     build: svelte-frontend
     labels:
-      - "traefik.http.routers.frontend.rule=Host(`www.givebox-ms.de`)"
+      - "traefik.http.routers.frontend.rule=Host(`www.givebox-ms.de`) || Host(`givebox-ms.de`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls=true"
       - "traefik.http.routers.frontend.tls.certresolver=le"
 
   backend:
     build: fastapi-backend
+    volumes:
+      - data:/code/app/data
     labels:
       - "traefik.http.routers.backend.rule=Host(`api.givebox-ms.de`)"
       - "traefik.http.routers.backend.entrypoints=websecure"
