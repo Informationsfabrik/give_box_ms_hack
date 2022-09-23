@@ -15,9 +15,9 @@ def get_givebox_by_id(
 ) -> schemas.GiveBox:
     # Authorize.jwt_required()
 
-    box = db.query(models.GiveBox).filter(models.GiveBox.id == id_).first()
+    box = db.query(models.Givebox).filter(models.Givebox.id == id_).first()
 
-    return schemas.GiveBox(box)
+    return schemas.GiveBox(**box.__dict__)
 
 
 @router.get("/givebox")
