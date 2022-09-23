@@ -15,7 +15,7 @@ def get_givebox_by_id(
 ) -> schemas.GiveBox:
     # Authorize.jwt_required()
 
-    box = db.query(models.Givebox).filter(models.Givebox.id == id_).first()
+    box = db.query(models.GiveBox).filter(models.GiveBox.id == id_).first()
 
     return schemas.GiveBox(**box.__dict__)
 
@@ -26,7 +26,7 @@ def get_givebox_list(
 ) -> List[schemas.GiveBoxBase]:
     # Authorize.jwt_required()
 
-    boxes = db.query(models.Givebox).all()
+    boxes = db.query(models.GiveBox).all()
 
     boxes = [schemas.GiveBoxBase(**box.__dict__) for box in boxes]
 
