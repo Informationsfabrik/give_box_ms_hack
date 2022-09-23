@@ -4,18 +4,10 @@ from pydantic import BaseModel
 from typing import Optional, List, Dict
 
 
-class Address(BaseModel):
-    id: int
-    street: str
-    house_number: int
-    zip_code: int
-    city: str
-
 class GiveBoxBase(BaseModel):
     id: Optional[int]
     longitude: float
     latitude: float
-    address: Address# Dict[str, any]
     is_temporary: bool
     description: str
     opening_hours: str
@@ -30,6 +22,10 @@ class GiveBox(GiveBoxBase):
     maintainer_info: Optional[str]
     last_confirmation_date: Optional[datetime]
     image_id: str
+    street: str
+    house_number: int
+    zip_code: int
+    city: str
 
 
 
@@ -39,13 +35,15 @@ class UserBase(BaseModel):
     id: int
     lastname: str
     firstname: str
-    # address
 
 
 class User(UserBase):
     email: str
     passwort: str
-    address: Address
+    street: str
+    house_number: int
+    zip_code: int
+    city: str
     giveboxes: List[GiveBox]
 
 

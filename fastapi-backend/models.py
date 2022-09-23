@@ -4,14 +4,6 @@ from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float, Date
 #from sqlalchemy.orm import relationship
 from database import Base
 
-class Address(Base):
-    __tablename__ = "Addresses"
-    id = Column(Integer, primary_key=True, index=True)
-    street = Column(String)
-    house_number = Column(Integer)
-    zip_code = Column(Integer)
-    city = Column(String)
-
 class Comment(Base):
     __tablename__ = "Comments"
     id = Column(Integer, primary_key=True, index=True)
@@ -34,14 +26,16 @@ class User(Base):
     password = Column(String)
     firstname = Column(String)
     lastname = Column(String)
-    address = Column(Integer, ForeignKey("Addresses.id"), nullable = False)
-
+    street = Column(String)
+    house_number = Column(Integer)
+    zip_code = Column(Integer)
+    city = Column(String)
+    
 class GiveBox(Base):
     __tablename__ = "GiveBoxes"
     id = Column(Integer, primary_key=True, index=True)
     longitude = Column(Float)
     latitude = Column(Float)
-    address_id = Column(Integer, ForeignKey("Addresses.id"), nullable = True)
     opening_hours = Column(String)
     is_temporary = Column(Boolean)
     description = Column(String)
@@ -51,3 +45,7 @@ class GiveBox(Base):
     maintenance_needed = Column(Boolean)
     image_id = Column(String)
     content = Column(String)
+    street = Column(String)
+    house_number = Column(Integer)
+    zip_code = Column(Integer)
+    city = Column(String)
