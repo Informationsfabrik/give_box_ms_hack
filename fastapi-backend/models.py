@@ -1,7 +1,7 @@
 from importlib.metadata import metadata
 from tokenize import Number
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float, DateTime, JSON, Table
-#from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship
 from database import Base
 
 class Comment(Base):
@@ -30,7 +30,7 @@ class User(Base):
     house_number = Column(Integer)
     zip_code = Column(Integer)
     city = Column(String)
-    
+
 class GiveBox(Base):
     __tablename__ = "GiveBoxes"
     id = Column(Integer, primary_key=True, index=True)
@@ -49,3 +49,4 @@ class GiveBox(Base):
     house_number = Column(Integer)
     zip_code = Column(Integer)
     city = Column(String)
+    maintainers = relationship("User", secondary=user_givebox_association)
