@@ -6,7 +6,7 @@ from typing import Optional, List
 
 class GiveBoxBase(BaseModel):
     id: int
-    longitide: float
+    longitude: float
     latitude: float
     address: str
     is_temporary: bool

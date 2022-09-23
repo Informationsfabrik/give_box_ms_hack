@@ -28,6 +28,6 @@ def get_givebox_list(
 
     boxes = db.query(models.Givebox).all()
 
-    boxes = [schemas.GiveBoxBase(box) for box in boxes]
+    boxes = [schemas.GiveBoxBase(**box.__dict__) for box in boxes]
 
     return boxes
