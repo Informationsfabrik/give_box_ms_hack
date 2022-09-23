@@ -15,7 +15,6 @@
 		oeffnungszeiten: '12:00-18:00',
 		bezeichnung: 'BLABLIBLU'
 	};
-	console.log(box);
 </script>
 
 <h1>Box {boxId}</h1>

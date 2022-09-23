@@ -11,7 +11,6 @@
 
         if(isNaN(box_id)) {
             // TODO fix
-            console.log("GG");
             navigate('/')
         }
     }
