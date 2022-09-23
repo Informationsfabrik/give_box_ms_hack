@@ -33,6 +33,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/fira-mono": "^4.5.9"
+		"@fontsource/fira-mono": "^4.5.9",
+		"svelte-routing": "^1.6.0",
+		"svelte-spa-router": "^3.3.0"
 	}
 }
