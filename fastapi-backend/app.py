@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import models
 from database import engine
 
-from routers import box
+from routers import box, comments
 
 # Create DB
 models.Base.metadata.create_all(bind=engine)
@@ -41,4 +41,6 @@ def get_config():
 def authjwt_exception_handler(request: Request, exc: AuthJWTException):
     return JSONResponse(status_code=exc.status_code, content={"detail": exc.message})
 
+
 app.include_router(box.router, tags=["box"])
+app.include_router(comments.router, tags=["comments"])
