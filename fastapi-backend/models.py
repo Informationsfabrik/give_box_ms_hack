@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, Float, ForeignKey
 from database import Base
 
 
@@ -16,3 +16,10 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String)
     password = Column(String)
+
+
+class Givebox(Base):
+    __tablename__ = "Giveboxes"
+    id = Column(Integer, primary_key=True, index=True)
+    longitude = Column(Float)
+    latitude = Column(Float)
