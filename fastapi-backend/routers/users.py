@@ -1,3 +1,4 @@
+from database import SessionLocal
 from fastapi import APIRouter, Depends
 from fastapi_jwt_auth import AuthJWT
 from typing import List
@@ -21,8 +22,7 @@ def get_user_by_id(
 
 
 @router.get("/users")
-def get_user(
-    db: Session = Depends(get_db), Authorize: AuthJWT = Depends()
+def get_user(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()
 ) -> List[schemas.UserBase]:
     # Authorize.jwt_required()
 
@@ -30,3 +30,10 @@ def get_user(
     users = [schemas.GiveBoxBase(user) for user in users]
 
     return users
+
+@router.post("/add_user")
+def add_givebox(user: schemas.User, db: SessionLocal = Depends(get_db)):
+    new_user = models.User(**user.__dict__)
+    db.add(new_user)
+    db.commit()
+    return 200

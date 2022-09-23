@@ -1,3 +1,7 @@
+from audioop import add
+import schemas
+import models
+from database import SessionLocal
 from fastapi import APIRouter, Depends
 from fastapi_jwt_auth import AuthJWT
 from typing import List
@@ -15,9 +19,13 @@ def get_givebox_by_id(
 ) -> schemas.GiveBox:
     # Authorize.jwt_required()
 
-    box = db.query(models.GiveBox).filter(models.GiveBox.id == id_).first()
+    db_box = db.query(models.GiveBox).filter(models.GiveBox.id == id_).first()
+    
+    box_dict = db_box.__dict__
+    
+    box : schemas.GiveBox = schemas.GiveBox(**box_dict)
 
-    return schemas.GiveBox(**box.__dict__)
+    return box
 
 
 @router.get("/givebox")
@@ -31,3 +39,12 @@ def get_givebox_list(
     boxes = [schemas.GiveBoxBase(**box.__dict__) for box in boxes]
 
     return boxes
+
+
+@router.post("/add_givebox")
+def add_givebox(box: schemas.GiveBox, db: SessionLocal = Depends(get_db)):
+    new_box = models.GiveBox(**box.__dict__)
+    db.add(new_box)
+    db.commit()
+    return 200
+
