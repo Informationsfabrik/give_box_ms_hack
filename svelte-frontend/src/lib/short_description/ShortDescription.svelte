@@ -2,9 +2,18 @@
     import { Button } from 'svelte-materialify';
     import { setContext } from 'svelte';
     import { writable, get } from 'svelte/store';
+    import Router, {location, push, pop, replace} from "svelte-spa-router";
     
     export let snackbar = false;
     export let description_object;
+    let redirect_url = "/box?" + description_object?.id;
+
+    export async function load() {
+      return {
+          status: 302,
+          redirect: redirect_url
+      }
+  }
  
 
 </script>
@@ -17,7 +26,8 @@
     <div>Beschreibung: {description_object?.description}</div>
     <div>Öffnungszeiten: {description_object?.opening_hours}</div>
     <br>
-    <Button>Mehr Info</Button>
+    <a href={redirect_url}><Button>Mehr Info</Button></a>
+    
 {/if}
 
 {#if !description_object}
