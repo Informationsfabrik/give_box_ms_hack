@@ -1,40 +1,27 @@
 <script>
-	import { onMount } from 'svelte';
-	let box;
 	export let boxId;
+	
+	const getBox = async () => {
+		var response = await fetch('https://api.givebox-ms.de/givebox/' + boxId, { headers: {'mode':'no-cors'}});
+		var result = await response.json();
+		return result;
+	}
 
-	// onMount(async () => {
-	//     box = await fetch('http://127.0.0.1:8081/box/' + boxId)
-	//         .then((res) => res.json());
-	// });
-	box = {
-		longitude: 0.2,
-		latitude: 0.1,
-		street: 'Steinfurter Str. 80',
-		number: false,
-		oeffnungszeiten: '12:00-18:00',
-		bezeichnung: 'BLABLIBLU'
-	};
+	let boxPromise = getBox();
+
 </script>
 
 <h1>Box {boxId}</h1>
 
-{#if box}
-	<div>
-		<p>{box}</p>
-		<p>{box.latitude}</p>
-		<p>{box.street}</p>
-		<p>{box.number}</p>
-		<p>{box.oeffnungszeiten}</p>
-		<p>{box.bezeichnung}</p>
-	</div>
-    <div>
-        <p>Kommentare</p>
-        <div>
-            
-        </div>
-    </div>
-{/if}
-
+{#await boxPromise then box2}
+	<table>
+		{#each Object.entries(box2) as [key, value], index}
+			<tr>
+				<td>{key}</td>
+				<td>{value}</td>
+			</tr>
+		{/each}
+	</table>
+{/await}
 <style>
 </style>
