@@ -1,6 +1,7 @@
 from datetime import datetime
+from sqlite3 import Timestamp
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
 
 
 class GiveBoxBase(BaseModel):
@@ -19,3 +20,32 @@ class GiveBox(GiveBoxBase):
     maintainer_information: Optional[str]
     last_confirmation_date: datetime
     # maintainer
+
+
+class Address(BaseModel):
+    id: int
+    street: str
+    house_number: int
+    zip_code: int
+    city: str
+
+
+class UserBase(BaseModel):
+    id: int
+    lastname: str
+    firstname: str
+    # address
+
+
+class User(UserBase):
+    email: str
+    passwort: str
+    address: Address
+    giveboxes: List[GiveBox]
+
+
+class Comment(BaseModel):
+    user: User
+    box: GiveBox
+    text: str
+    timestamp: datetime
