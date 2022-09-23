@@ -1,50 +1,53 @@
 from datetime import datetime
 from sqlite3 import Timestamp
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import Optional, List, Dict
 
 
 class GiveBoxBase(BaseModel):
-    id: int
+    id: Optional[int]
     longitude: float
     latitude: float
-    address: str
     is_temporary: bool
     description: str
     opening_hours: str
+    is_temporary: bool
+    extern_link: str
+    content = str
 
 
 class GiveBox(GiveBoxBase):
-    last_confirmation_date: datetime
-    maintainer_information: Optional[str]
-    last_confirmation_date: datetime
-    # maintainer
+    maintenance_needed: bool
+    maintainer_info: Optional[str]
+    last_confirmation_date: Optional[datetime]
+    image_id: Optional[str]
+    street: Optional[str]
+    house_number: Optional[int]
+    zip_code: Optional[int]
+    city: Optinonal[str]
 
 
-class Address(BaseModel):
-    id: int
-    street: str
-    house_number: int
-    zip_code: int
-    city: str
+
 
 
 class UserBase(BaseModel):
     id: int
     lastname: str
     firstname: str
-    # address
 
 
 class User(UserBase):
     email: str
     passwort: str
-    address: Address
-    giveboxes: List[int]
+    street: str
+    house_number: int
+    zip_code: int
+    city: str
+    giveboxes: List[GiveBox]
 
 
 class Comment(BaseModel):
-    user_id: int
-    box_id: int
+    user: User
+    box: GiveBox
     text: str
     timestamp: datetime

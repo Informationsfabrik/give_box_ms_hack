@@ -1,16 +1,8 @@
 from importlib.metadata import metadata
 from tokenize import Number
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float, DateTime, JSON, Table
-from sqlalchemy.orm import relationship
+#from sqlalchemy.orm import relationship
 from database import Base
-
-class Address(Base):
-    __tablename__ = "Addresses"
-    id = Column(Integer, primary_key=True, index=True)
-    street = Column(String)
-    house_number = Column(Integer)
-    zip_code = Column(Integer)
-    city = Column(String)
 
 class Comment(Base):
     __tablename__ = "Comments"
@@ -34,22 +26,26 @@ class User(Base):
     password = Column(String)
     firstname = Column(String)
     lastname = Column(String)
-    address = Column(Integer, ForeignKey("Addresses.id"), nullable = False)
-    giveboxes = relationship("GiveBox", secondary=user_givebox_association,back_populates="maintainer")
-
+    street = Column(String)
+    house_number = Column(Integer)
+    zip_code = Column(Integer)
+    city = Column(String)
+    
 class GiveBox(Base):
     __tablename__ = "GiveBoxes"
     id = Column(Integer, primary_key=True, index=True)
     longitude = Column(Float)
     latitude = Column(Float)
-    address = Column(Integer, ForeignKey("Addresses.id"), nullable = False)
     opening_hours = Column(String)
     is_temporary = Column(Boolean)
     description = Column(String)
-    last_confirmation_date = Column(DateTime)
-    maintainer = relationship("User", secondary=user_givebox_association,back_populates="giveboxes")
-    image_link = Column(String)
-    tags = Column(JSON)
-
-
-
+    extern_link = Column(String)
+    last_confirmation_date = Column(DateTime, nullable = True)
+    maintainer_info = Column(String)
+    maintenance_needed = Column(Boolean)
+    image_id = Column(String)
+    content = Column(String)
+    street = Column(String)
+    house_number = Column(Integer)
+    zip_code = Column(Integer)
+    city = Column(String)
