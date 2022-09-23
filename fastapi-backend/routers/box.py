@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from fastapi_jwt_auth import AuthJWT
 from typing import List
 from sqlalchemy.orm import Session
-from utils import get_db
+from routers.utils import get_db
 import models
 import schemas
 

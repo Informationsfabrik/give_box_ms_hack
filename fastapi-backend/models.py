@@ -1,7 +1,7 @@
-import email
 from importlib.metadata import metadata
 from tokenize import Number
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float, DateTime, JSON, Table, relationship
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float, DateTime, JSON, Table
+from sqlalchemy.orm import relationship
 from database import Base
 
 class Address(Base):
@@ -14,6 +14,7 @@ class Address(Base):
 
 class Comment(Base):
     __tablename__ = "Comments"
+    id = Column(Integer, primary_key=True, index=True)
     box_id = Column(Integer, ForeignKey("Giveboxes.id"), nullable = False)
     user_id = Column(Integer, ForeignKey("Users.id"), nullable = False)
     text = Column(String)
