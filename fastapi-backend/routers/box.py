@@ -20,7 +20,7 @@ def get_givebox_by_id(
 
     box = db.query(models.GiveBox).filter(models.GiveBox.id == id_).first()
 
-    return schemas.GiveBox(box)
+    return schemas.GiveBox(**box.__dict__)
 
 
 @router.get("/givebox")
@@ -31,7 +31,7 @@ def get_givebox_list(
 
     boxes = db.query(models.GiveBox).all()
 
-    boxes = [schemas.GiveBoxBase(box) for box in boxes]
+    boxes = [schemas.GiveBoxBase(**box.__dict__) for box in boxes]
 
     return boxes
 
