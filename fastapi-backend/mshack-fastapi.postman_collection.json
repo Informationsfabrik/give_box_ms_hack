@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "aba13686-3bb6-425b-8a26-758d3388a834",
+		"_postman_id": "5bb31a28-8df7-4f90-bbb8-02fb45747916",
 		"name": "fastapi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -219,6 +219,37 @@
 					"port": "8081",
 					"path": [
 						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "givebox",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"longitude\" : 51.970527,\r\n    \"latitude\" : 7.624340,\r\n    \"description\" : \"Kreuzkirche\",\r\n    \"address_id\": 1,\r\n    \"image_id\" : 1,\r\n    \"extern_link\" : \"http://wiki.muenster.org/index.php/Öffentliche_Bücherregale_in_Münster\",\r\n    \"content\" : {\"book\": true, \"clothes\": false, \"toys\": false, \"electronics\": false, \"other\": \"Besen, Kehrblech und co :)\"},\r\n    \"is_temporary\" : false,\r\n    \"last_confirmation_date\" : null,\r\n    \"maintenance_needed\" : false,\r\n    \"maintainer_info\" : \"\",\r\n    \"opening_hours\" : \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8081/add_givebox",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8081",
+					"path": [
+						"add_givebox"
 					]
 				}
 			},
