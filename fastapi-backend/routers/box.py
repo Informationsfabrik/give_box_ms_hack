@@ -17,7 +17,7 @@ def get_givebox_by_id(
 
     box = db.query(models.GiveBox).filter(models.GiveBox.id == id_).first()
 
-    return schemas.GiveBox(box)
+    return schemas.GiveBox(**box.__dict__)
 
 
 @router.get("/givebox")
