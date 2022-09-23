@@ -24,7 +24,7 @@ user_givebox_association = Table(
     "user_givebox_association",
     Base.metadata,
     Column("user_id", ForeignKey("Users.id")),
-    Column("box_id", ForeignKey("Giveboxes.id")),
+    Column("box_id", ForeignKey("GiveBoxes.id")),
 )
 
 class User(Base):
