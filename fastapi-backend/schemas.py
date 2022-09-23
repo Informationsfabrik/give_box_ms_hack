@@ -24,7 +24,7 @@ class GiveBox(GiveBoxBase):
     street: Optional[str]
     house_number: Optional[int]
     zip_code: Optional[int]
-    city: Optinonal[str]
+    city: Optional[str]
 
 
 
