@@ -41,11 +41,11 @@ class User(UserBase):
     email: str
     passwort: str
     address: Address
-    giveboxes: List[GiveBox]
+    giveboxes: List[int]
 
 
 class Comment(BaseModel):
-    user: User
-    box: GiveBox
+    user_id: int
+    box_id: int
     text: str
     timestamp: datetime
