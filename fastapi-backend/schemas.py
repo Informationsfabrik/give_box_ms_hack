@@ -1,7 +1,16 @@
 from datetime import datetime
 from sqlite3 import Timestamp
-from pydantic import BaseModel
+from pydantic import BaseModel, Json
 from typing import Optional, List, Dict
+
+
+class Content(BaseModel):
+    # {\"book\": true, \"clothes\": false, \"toys\": false, \"electronics\": false, \"other\": \"Besen, Kehrblech und co :)\"}
+    book: Optional[bool]
+    clothes: Optional[bool]
+    toys: Optional[bool]
+    electronics: Optional[bool]
+    other: Optional[str]
 
 
 class GiveBoxBase(BaseModel):
@@ -13,7 +22,7 @@ class GiveBoxBase(BaseModel):
     opening_hours: Optional[str]
     is_temporary: Optional[bool]
     extern_link: Optional[str]
-    content: Optional[dict]
+    content: Optional[Content]
 
 
 class GiveBox(GiveBoxBase):

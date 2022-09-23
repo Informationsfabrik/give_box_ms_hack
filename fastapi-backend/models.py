@@ -45,7 +45,7 @@ class GiveBox(Base):
     maintainer_info = Column(String)
     maintenance_needed = Column(Boolean)
     image_id = Column(String)
-    content = Column(JSON)
+    content = Column(JSON, default = {}, nullable=True, none_as_null=True)
     street = Column(String)
     house_number = Column(Integer)
     zip_code = Column(Integer)
