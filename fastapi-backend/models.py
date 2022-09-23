@@ -15,7 +15,7 @@ class Address(Base):
 class Comment(Base):
     __tablename__ = "Comments"
     id = Column(Integer, primary_key=True, index=True)
-    box_id = Column(Integer, ForeignKey("Giveboxes.id"), nullable = False)
+    box_id = Column(Integer, ForeignKey("GiveBoxes.id"), nullable = False)
     user_id = Column(Integer, ForeignKey("Users.id"), nullable = False)
     text = Column(String)
     timestamp = Column(DateTime)
