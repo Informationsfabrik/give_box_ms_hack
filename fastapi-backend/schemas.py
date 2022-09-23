@@ -1,6 +1,20 @@
 from datetime import datetime
 from pydantic import BaseModel, Json
-from typing import Optional
+from typing import Optional, List 
+
+class UserBase(BaseModel):
+    id: Optional[int]
+    lastname: str
+    firstname: str
+
+
+class User(UserBase):
+    email: str
+    password: str
+    street: str
+    house_number: int
+    zip_code: int
+    city: str
 
 
 class Content(BaseModel):
@@ -32,22 +46,7 @@ class Givebox(GiveboxBase):
     house_number: Optional[int]
     zip_code: Optional[int]
     city: Optional[str]
-
-
-class UserBase(BaseModel):
-    id: Optional[int]
-    lastname: str
-    firstname: str
-
-
-class User(UserBase):
-    email: str
-    password: str
-    street: str
-    house_number: int
-    zip_code: int
-    city: str
-
+    maintainers : Optional[List[User]]
 
 class Comment(BaseModel):
     user: User
