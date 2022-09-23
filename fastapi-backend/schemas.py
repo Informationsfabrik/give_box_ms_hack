@@ -3,6 +3,20 @@ from sqlite3 import Timestamp
 from pydantic import BaseModel
 from typing import Optional, List, Dict
 
+class UserBase(BaseModel):
+    id: Optional[int]
+    lastname: str
+    firstname: str
+
+
+class User(UserBase):
+    email: str
+    password: str
+    street: str
+    house_number: int
+    zip_code: int
+    city: str
+
 
 class GiveBoxBase(BaseModel):
     id: Optional[int]
@@ -25,24 +39,11 @@ class GiveBox(GiveBoxBase):
     house_number: Optional[int]
     zip_code: Optional[int]
     city: Optional[str]
+    maintainers : Optional[List[User]]
 
 
 
 
-
-class UserBase(BaseModel):
-    id: Optional[int]
-    lastname: str
-    firstname: str
-
-
-class User(UserBase):
-    email: str
-    password: str
-    street: str
-    house_number: int
-    zip_code: int
-    city: str
 
 class Comment(BaseModel):
     user: User

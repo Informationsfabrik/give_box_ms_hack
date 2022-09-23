@@ -5,7 +5,7 @@ from database import SessionLocal
 from fastapi import APIRouter, Depends
 from fastapi_jwt_auth import AuthJWT
 from typing import List
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from routers.utils import get_db
 import models
 import schemas
@@ -19,10 +19,12 @@ def get_givebox_by_id(
 ) -> schemas.GiveBox:
     # Authorize.jwt_required()
 
-    db_box = db.query(models.GiveBox).filter(models.GiveBox.id == id_).first()
-    
+    db_box = db.query(models.GiveBox).options(joinedload(models.GiveBox.maintainers)).filter(models.GiveBox.id == id_).first()
+
     box_dict = db_box.__dict__
-    
+
+    box_dict["maintainers"] = [schemas.User(**maintainer.__dict__) for maintainer in box_dict["maintainers"]]
+
     box : schemas.GiveBox = schemas.GiveBox(**box_dict)
 
     return box
