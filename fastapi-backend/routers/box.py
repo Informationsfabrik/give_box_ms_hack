@@ -9,24 +9,25 @@ import schemas
 router = APIRouter()
 
 
-@router.get("/users/{id_}")
-def get_user_by_id(
+@router.get("/givebox/{id_}")
+def get_givebox_by_id(
     id_: int, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()
-) -> schemas.User:
+) -> schemas.GiveBox:
     # Authorize.jwt_required()
 
-    user = db.query(models.User).filter(models.User.id == id_).first()
+    box = db.query(models.GiveBox).filter(models.GiveBox.id == id_).first()
 
-    return schemas.User(user)
+    return schemas.GiveBox(**box.__dict__)
 
 
-@router.get("/users")
-def get_user(
+@router.get("/givebox")
+def get_givebox_list(
     db: Session = Depends(get_db), Authorize: AuthJWT = Depends()
-) -> List[schemas.UserBase]:
+) -> List[schemas.GiveBoxBase]:
     # Authorize.jwt_required()
 
-    users = db.query(models.User)
-    users = [schemas.GiveBoxBase(user) for user in users]
+    boxes = db.query(models.GiveBox).all()
 
-    return users
+    boxes = [schemas.GiveBoxBase(**box.__dict__) for box in boxes]
+
+    return boxes

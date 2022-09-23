@@ -13,6 +13,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-node": "^1.0.0-next.95",
 		"@sveltejs/kit": "next",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
@@ -35,6 +36,8 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/fira-mono": "^4.5.9",
-		"leaflet": "^1.9.1"
+		"leaflet": "^1.9.1",
+		"svelte-routing": "^1.6.0",
+		"svelte-spa-router": "^3.3.0"
 	}
 }
