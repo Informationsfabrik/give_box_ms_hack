@@ -26,6 +26,8 @@ def get_givebox_list(
 ) -> List[schemas.GiveBoxBase]:
     # Authorize.jwt_required()
 
-    boxes = db.query(models.Givebox)
+    boxes = db.query(models.Givebox).all()
+
+    boxes = [schemas.GiveBoxBase(box) for box in boxes]
 
     return boxes
