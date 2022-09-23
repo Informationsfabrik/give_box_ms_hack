@@ -5,21 +5,25 @@ from typing import Optional, List
 
 
 class GiveBoxBase(BaseModel):
-    id: int
-    longitide: float
+    id: Optional[int]
+    longitude: float
     latitude: float
-    address: str
+    address_id: int
     is_temporary: bool
     description: str
     opening_hours: str
+    is_temporary: bool
+    extern_link: str
+    content = str
 
 
 class GiveBox(GiveBoxBase):
-    last_checked: datetime
-    maintenance_needed: bool
-    maintainer_information: Optional[str]
     last_confirmation_date: datetime
-    # maintainer
+    maintenance_needed: bool
+    maintainer_info: Optional[str]
+    last_confirmation_date: Optional[datetime]
+    image_id: str
+
 
 
 class Address(BaseModel):

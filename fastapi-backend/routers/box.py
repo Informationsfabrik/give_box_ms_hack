@@ -1,3 +1,6 @@
+import schemas
+import models
+from database import SessionLocal
 from fastapi import APIRouter, Depends
 from fastapi_jwt_auth import AuthJWT
 from typing import List
@@ -26,8 +29,17 @@ def get_givebox_list(
 ) -> List[schemas.GiveBoxBase]:
     # Authorize.jwt_required()
 
-    boxes = db.query(models.Givebox).all()
+    boxes = db.query(models.GiveBox).all()
 
     boxes = [schemas.GiveBoxBase(box) for box in boxes]
 
     return boxes
+
+
+@router.post("/add_givebox")
+def add_givebox(box: schemas.GiveBox, db: SessionLocal = Depends(get_db)):
+    print(box.__dict__)
+    new_box = models.GiveBox(**box.__dict__)
+    db.add(new_box)
+    db.commit()
+    return 200
