@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends
 from fastapi_jwt_auth import AuthJWT
 from typing import List
 from sqlalchemy.orm import Session
-from routers.utils import get_db
+from utils import get_db
 import models
 import schemas
 
@@ -27,7 +27,7 @@ def get_user(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()
     # Authorize.jwt_required()
 
     users = db.query(models.User)
-    users = [schemas.GiveBoxBase(user) for user in users]
+    users = [schemas.GiveboxBase(user) for user in users]
 
     return users
 
