@@ -43,3 +43,11 @@ def add_givebox(box: schemas.GiveBox, db: SessionLocal = Depends(get_db)):
     db.add(new_box)
     db.commit()
     return 200
+
+@router.post("/add_address")
+def add_address(address: schemas.Address, db: SessionLocal = Depends(get_db)):
+    print(address.__dict__)
+    new_address = models.Address(**address.__dict__)
+    db.add(new_address)
+    db.commit()
+    return 200

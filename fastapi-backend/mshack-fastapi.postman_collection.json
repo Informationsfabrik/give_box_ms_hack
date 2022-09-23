@@ -225,7 +225,7 @@
 			"response": []
 		},
 		{
-			"name": "givebox",
+			"name": "add_givebox",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -250,6 +250,37 @@
 					"port": "8081",
 					"path": [
 						"add_givebox"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_address",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"street\": \"Hoyastraße\",\r\n    \"house_number\": 17,\r\n    \"zip_code\": 48147,\r\n    \"city\": \"Münster\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8081/add_address",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8081",
+					"path": [
+						"add_address"
 					]
 				}
 			},
