@@ -5,6 +5,7 @@
 
     let mapElement;
     let map;
+    let loc = [51.961940, 7.626057];
 
     onMount(async () => {
         if(browser) {
@@ -20,9 +21,10 @@
 
 
     function addMarker() {
-        leaflet.marker([51.961940, 7.626057]).addTo(map)
-                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-                .openPopup();
+        loc = [loc[0] + 0.001, loc[1] + 0.001]
+        leaflet.marker(loc).addTo(map).on('click', function(e) {
+            console.log(e.latlng);
+        });
     }
 
 
