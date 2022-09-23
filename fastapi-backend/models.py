@@ -37,8 +37,8 @@ class User(Base):
     address = Column(Integer, ForeignKey("Addresses.id"), nullable = False)
     giveboxes = relationship("Givebox", secondary=user_givebox_association,back_populates="maintainer")
 
-class Givebox(Base):
-    __tablename__ = "Giveboxes"
+class GiveBox(Base):
+    __tablename__ = "GiveBoxes"
     id = Column(Integer, primary_key=True, index=True)
     longitude = Column(Float)
     latitude = Column(Float)
