@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import models
 from database import engine
 
-from routers import users, items, todos
+from routers import users, items, todos, box
 
 # Create DB
 models.Base.metadata.create_all(bind=engine)
@@ -45,3 +45,6 @@ def authjwt_exception_handler(request: Request, exc: AuthJWTException):
 app.include_router(users.router, tags=["users"])
 app.include_router(items.router, tags=["items"])
 app.include_router(todos.router, tags=["todos"])
+
+
+app.include_router(box.router, tags=["box"])
