@@ -2,7 +2,7 @@
     import Map from "$lib/map/Map.svelte";
 
     const getBoxes = async () => {
-		var response = await fetch('https://api.givebox-ms.de/givebox', { headers: {'mode':'no-cors'}});
+		var response = await fetch('https://api.givebox-ms.de/giveboxes', { headers: {'mode':'no-cors'}});
 		var result = await response.json();
 		return result;
 	}
