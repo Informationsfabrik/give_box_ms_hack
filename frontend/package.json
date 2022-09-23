@@ -1,0 +1,34 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prepare": "npm run smui-theme-light && npm run smui-theme-dark",
+    "smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
+    "smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark"
+  },
+  "devDependencies": {
+    "@mdi/js": "^7.0.96",
+    "@smui/icon-button": "^6.1.0",
+    "@smui/top-app-bar": "^6.1.0",
+    "@sveltejs/vite-plugin-svelte": "^1.0.2",
+    "html5-qrcode": "^2.2.1",
+    "modern-svelte-qr-scanner": "^1.3.6",
+    "postcss": "^8.4.16",
+    "rollup-plugin-postcss": "^4.0.2",
+    "sass": "^1.55.0",
+    "smui-theme": "^6.1.3",
+    "svelte": "^3.49.0",
+    "svelte-materialify": "^0.3.11",
+    "svelte-preprocess": "^4.10.7",
+    "vite": "^3.1.0"
+  },
+  "dependencies": {
+    "svelte-material-ui": "^6.1.3",
+    "svelte-spa-router": "^3.3.0"
+  }
+}
