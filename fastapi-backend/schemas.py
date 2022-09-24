@@ -55,3 +55,7 @@ class Comment(BaseModel):
     box: Optional[Givebox]
     text: Optional[str]
     timestamp: Optional[datetime]
+
+class Image(BaseModel):
+    box_id: Optional[int]
+    data: Optional[str]
