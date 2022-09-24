@@ -1,0 +1,38 @@
+[
+    {
+        "longitude" : 7.624340,
+        "latitude" : 51.970527,
+        "description" : "Kreuzkirche",
+        "address_id": 1,
+        "image_id" : 1,
+        "extern_link" : "http://wiki.muenster.org/index.php/Öffentliche_Bücherregale_in_Münster",
+        "content" : {"book": true, "clothes": false, "toys": false, "electronics": false, "other": "Besen, Kehrblech und co :)"},
+        "is_temporary" : false,
+        "last_confirmation_date" : "2020-01-01 00:00:00",
+        "maintenance_needed" : false,
+        "maintainer_info" : "",
+        "opening_hours" : "24/7",
+        "street": "Hoyastraße",
+        "house_number": 17,
+        "zip_code": 48147,
+        "city": "Münster"
+    },
+    {
+        "longitude" : 7.6583182,
+        "latitude" : 51.9670045,
+        "description" : "Danziger Freiheit",
+        "address_id": 1,
+        "image_id" : 1,
+        "extern_link" : "https://hvghirten.jimdofree.com/-/sozialraumaktivit%C3%A4ten/ska-treff/",
+        "content" : {"book": true, "clothes": true, "toys": true, "electronics": false, "other": ""},
+        "is_temporary" : false,
+        "last_confirmation_date" : "2020-01-01 00:00:00",
+        "maintenance_needed" : false,
+        "maintainer_info" : "Für konstenlose Müllentsorgung am Bauhof bitte Karte anfragen bei 0251/986225-66",
+        "opening_hours" : "24/7",
+        "street": "Hoyastraße",
+        "house_number": 17,
+        "zip_code": 48147,
+        "city": "Münster"
+    }
+]
