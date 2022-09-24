@@ -55,3 +55,11 @@ class Comment(Base):
 
     text = Column(String)
     timestamp = Column(DateTime)
+
+class Image(Base):
+    __tablename__ = "Images"
+    id = Column(Integer, primary_key=True, index=True)
+    box_id = Column(Integer, ForeignKey("GiveBoxes.id"))
+    box = relationship("GiveBox")    
+    path = Column(String)
+    is_title_image = Column(Boolean)

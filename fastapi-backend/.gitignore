@@ -188,3 +188,6 @@ fabric.properties
 
 
 *.sqlite
+
+
+data/images
