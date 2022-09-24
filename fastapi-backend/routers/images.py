@@ -50,4 +50,4 @@ def post_image(image: schemas.Image, db: SessionLocal = Depends(get_db)):
         binary_file.write(data_as_bytes)
 
 
-    return 200
+    return image.id
