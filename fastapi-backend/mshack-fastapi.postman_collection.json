@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5bb31a28-8df7-4f90-bbb8-02fb45747916",
+		"_postman_id": "972fb7e1-e4bf-42c3-ad17-7c310751f96d",
 		"name": "fastapi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -231,7 +231,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"longitude\" : 51.970527,\r\n    \"latitude\" : 7.624340,\r\n    \"description\" : \"Kreuzkirche\",\r\n    \"address_id\": 1,\r\n    \"image_id\" : 1,\r\n    \"extern_link\" : \"http://wiki.muenster.org/index.php/Öffentliche_Bücherregale_in_Münster\",\r\n    \"content\" : {\"book\": true, \"clothes\": false, \"toys\": false, \"electronics\": false, \"other\": \"Besen, Kehrblech und co :)\"},\r\n    \"is_temporary\" : false,\r\n    \"last_confirmation_date\" : null,\r\n    \"maintenance_needed\" : false,\r\n    \"maintainer_info\" : \"\",\r\n    \"opening_hours\" : \"\"\r\n}",
+					"raw": "{\r\n    \"longitude\" : 51.970527,\r\n    \"latitude\" : 7.624340,\r\n    \"description\" : \"Kreuzkirche\",\r\n    \"address_id\": 1,\r\n    \"image_id\" : 1,\r\n    \"extern_link\" : \"http://wiki.muenster.org/index.php/Öffentliche_Bücherregale_in_Münster\",\r\n    \"content\" : {\"book\": true, \"clothes\": false, \"toys\": false, \"electronics\": false, \"other\": \"Besen, Kehrblech und co :)\"},\r\n    \"is_temporary\" : false,\r\n    \"last_confirmation_date\" : \"2020-01-01 00:00:00\",\r\n    \"maintenance_needed\" : false,\r\n    \"maintainer_info\" : \"\",\r\n    \"opening_hours\" : \"\",\r\n    \"street\": \"Hoyastraße\",\r\n    \"house_number\": 17,\r\n    \"zip_code\": 48147,\r\n    \"city\": \"Münster\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -239,7 +239,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8081/add_givebox",
+					"raw": "http://127.0.0.1:8081/giveboxes",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -249,7 +249,38 @@
 					],
 					"port": "8081",
 					"path": [
-						"add_givebox"
+						"giveboxes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_maintainer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"box_id\" : 1,\r\n    \"user_id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8081/add_maintainer",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8081",
+					"path": [
+						"add_maintainer"
 					]
 				}
 			},
@@ -287,7 +318,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "add_user",
 			"request": {
 				"method": "POST",
 				"header": [],
