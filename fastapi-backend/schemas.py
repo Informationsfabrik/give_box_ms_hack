@@ -30,22 +30,22 @@ class GiveboxBase(BaseModel):
     longitude: float
     latitude: float
     is_temporary: Optional[bool]
-    description: Optional[str]
+    title: Optional[str]
     opening_hours: Optional[str]
     is_temporary: Optional[bool]
     extern_link: Optional[str]
     content: Optional[Content]
-
-
-class Givebox(GiveboxBase):
-    maintenance_needed: Optional[bool]
-    maintainer_info: Optional[str]
-    last_confirmation_date: Optional[datetime]
-    image_id: Optional[str]
     street: Optional[str]
     house_number: Optional[int]
     zip_code: Optional[int]
     city: Optional[str]
+
+class Givebox(GiveboxBase):
+    maintenance_needed: Optional[bool]
+    maintainer_info: Optional[str]
+    description: Optional[str]
+    last_confirmation_date: Optional[datetime]
+    image_id: Optional[str]
     maintainers : List[User] = []
 
 class Comment(BaseModel):

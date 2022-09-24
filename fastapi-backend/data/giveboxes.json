@@ -1,9 +1,10 @@
 [
     {
         "longitude" :  7.640429624761706,
+        "description": "Kommt in Digi.Hub und lebt die Sharing Economy!",
         "latitude" : 51.95222265443588,
-        "description" : "Digi.Hub",
-        "image_id" : 1,
+        "title" : "Digi.Hub",
+        "image_id" : 0,
         "extern_link" : "https://www.digitalhub.ms/",
         "content" : {"book": true, "clothes": true, "toys": false, "electronics": true, "other": "Kaffee, Bier, Berliner Luft"},
         "is_temporary" : false,
@@ -18,9 +19,10 @@
         },
         {
         "longitude" : 7.624340,
+        "description": "Es steht im Kreuzviertel vor dem Restaurant Kreuzviertel an der Hoyastraße 17, Ecke Dettenstraße. Es handelt sich um einen von diesem Restaurant gestifteten Bücherklappschrank mit verglasten Türen. ",
         "latitude" : 51.970527,
-        "description" : "Kreuzkirche",
-        "image_id" : 1,
+        "title" : "Kreuzkirche",
+        "image_id" : 25,
         "extern_link" : "http://wiki.muenster.org/index.php/Öffentliche_Bücherregale_in_Münster",
         "content" : {"book": true, "clothes": false, "toys": false, "electronics": false, "other": "Besen, Kehrblech und co :)"},
         "is_temporary" : false,
@@ -35,20 +37,480 @@
     },
     {
         "longitude" : 7.6583182,
+        "description": "Im Ska-Treff, dem Bürgertreff im Viertel soll bürgerschaftliches und freiwilliges Engagement sowie der Aufbau eines nachbarschaftlichen Netzwerks gefördert werden. Aktionen wie z. B. das Bauen einer Givebox und einer Boulebahn, Organisation von Flohmärkten und Nachbarschaftsfesten sind hier unter Initiative engagierter Bürger entstanden.",
         "latitude" : 51.9670045,
-        "description" : "Danziger Freiheit",
-        "address_id": 1,
-        "image_id" : 1,
+        "title" : "Danziger Freiheit",
+        "image_id" : 26,
         "extern_link" : "https://hvghirten.jimdofree.com/-/sozialraumaktivit%C3%A4ten/ska-treff/",
         "content" : {"book": true, "clothes": true, "toys": true, "electronics": false, "other": ""},
         "is_temporary" : false,
         "last_confirmation_date" : "2020-01-01 00:00:00",
         "maintenance_needed" : false,
-        "maintainer_info" : "Für konstenlose Müllentsorgung am Bauhof bitte Karte anfragen bei 0251/986225-66",
+        "maintainer_info" : "Für konstenlose Müllentsorgung am Bauhof bitte anfragen bei 0251/986225-66",
         "opening_hours" : "24/7",
         "street": "Hoyastraße",
         "house_number": 17,
         "zip_code": 48147,
         "city": "Münster"
+    },
+    {
+        "title": "Margareten-Kirche",
+        "description": "",
+        "latitude": 51.9504566,
+        "longitude": 7.6714863,
+        "opening_hours": "24/7;",
+        "extern_link": null,
+        "last_confirmation_date": null,
+        "street": null,
+        "house_number": null,
+        "zip_code": null,
+        "city": null,
+        "image_id": 1,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Christuskirche ",
+        "description": "",
+        "latitude": 51.942209,
+        "longitude": 7.623405,
+        "opening_hours": "24/7;",
+        "extern_link": "https://www.baptisten-muenster.de/gemeindeleben/mission-diakonie/give-box.html",
+        "last_confirmation_date": "22.08.2020",
+        "street": null,
+        "house_number": null,
+        "zip_code": null,
+        "city": null,
+        "image_id": 2,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Haus am Guten Hirten",
+        "description": "",
+        "latitude": 51.9622609,
+        "longitude": 7.6562534,
+        "opening_hours": "24/7;",
+        "extern_link": "https://www.gutes-morgen.ms/de/givebox/",
+        "last_confirmation_date": null,
+        "street": "Mauritz-Lindenweg",
+        "house_number": "61",
+        "zip_code": "48145",
+        "city": "MÜnster",
+        "image_id": 3,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "HoMaLa",
+        "description": "",
+        "latitude": 51.9721136,
+        "longitude": 7.5954719,
+        "opening_hours": "24/7;",
+        "extern_link": "https://muenster.adventist.eu/give-box",
+        "last_confirmation_date": null,
+        "street": "Auf dem Parkplatz der Freikirche der Siebenten-Tags-Adventisten, Horstmarer Landweg",
+        "house_number": "96",
+        "zip_code": "48149",
+        "city": "MÜnster",
+        "image_id": 4,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Josefskirchplatz",
+        "description": "",
+        "latitude": 51.9498914,
+        "longitude": 7.6247309,
+        "opening_hours": "24/7;",
+        "extern_link": "https://www.wn.de/Muenster/4205874-Aktion-von-Pfarrei-Give-Box-wirbt-fuer-Nachhaltigkeit",
+        "last_confirmation_date": null,
+        "street": null,
+        "house_number": null,
+        "zip_code": null,
+        "city": null,
+        "image_id": 5,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Rosenplatz",
+        "description": "",
+        "latitude": 51.965312,
+        "longitude": 7.621543,
+        "opening_hours": "24/7;",
+        "extern_link": "http://wiki.muenster.org/index.php/\u00d6ffentliche_BÜcherregale_in_MÜnster",
+        "last_confirmation_date": "24.08.2020",
+        "street": null,
+        "house_number": null,
+        "zip_code": null,
+        "city": null,
+        "image_id": 6,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Schlo\u00dftheater",
+        "description": "",
+        "latitude": 51.9712267,
+        "longitude": 7.6117306,
+        "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 13:30-23:00;",
+        "extern_link": "http://wiki.muenster.org/index.php/\u00d6ffentliche_BÜcherregale_in_MÜnster",
+        "last_confirmation_date": null,
+        "street": "Im Caf\u00e9 im Schlo\u00dftheater (Kreuzviertel), Melchersstra\u00dfe",
+        "house_number": "81",
+        "zip_code": "48149",
+        "city": "MÜnster",
+        "image_id": 8,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Blau-Wei\u00df Aasee",
+        "description": "",
+        "latitude": 51.9405614,
+        "longitude": 7.6038787,
+        "opening_hours": null,
+        "extern_link": "http://wiki.muenster.org/index.php/\u00d6ffentliche_BÜcherregale_in_MÜnster",
+        "last_confirmation_date": null,
+        "street": "Multifunktionshaus von Blau-Wei\u00df Aasee, Bonhoefferstra\u00dfe",
+        "house_number": "54",
+        "zip_code": "48151",
+        "city": "MÜnster",
+        "image_id": 9,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Alte Post",
+        "description": "",
+        "latitude": 51.926208,
+        "longitude": 7.6200657,
+        "opening_hours": null,
+        "extern_link": "http://wiki.muenster.org/index.php/\u00d6ffentliche_BÜcherregale_in_MÜnster",
+        "last_confirmation_date": null,
+        "street": "BÜrger- und Beratungszentrum Alte Post in Berg Fidel, Rincklakeweg",
+        "house_number": "21",
+        "zip_code": "48153",
+        "city": "MÜnster",
+        "image_id": 10,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Hiltrup Marktallee",
+        "description": "",
+        "latitude": 51.9033154,
+        "longitude": 7.6429497,
+        "opening_hours": null,
+        "extern_link": "https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke_in_Nordrhein-Westfalen",
+        "last_confirmation_date": null,
+        "street": null,
+        "house_number": null,
+        "zip_code": "48165",
+        "city": "MÜnster",
+        "image_id": 11,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Hiltrup Osttor",
+        "description": "",
+        "latitude": 51.9059714,
+        "longitude": 7.6638353,
+        "opening_hours": null,
+        "extern_link": "https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke_in_Nordrhein-Westfalen",
+        "last_confirmation_date": null,
+        "street": "Hiltrup neben \"Das andere Restaurant\", Osttor",
+        "house_number": "60",
+        "zip_code": "48165",
+        "city": "MÜnster",
+        "image_id": 12,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Hiltrup Meesenstiege",
+        "description": "",
+        "latitude": 51.902743,
+        "longitude": 7.6265749,
+        "opening_hours": null,
+        "extern_link": "https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke_in_Nordrhein-Westfalen",
+        "last_confirmation_date": null,
+        "street": "Hiltrup am E-Center, Meesenstiege",
+        "house_number": "54",
+        "zip_code": "48165",
+        "city": "MÜnster",
+        "image_id": 13,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Gremmendorf",
+        "description": "",
+        "latitude": 51.9386646,
+        "longitude": 7.6393426,
+        "opening_hours": "Mo,Tu,We,Th,Fr 08:30-19:00; Sa 09:30-19:00;",
+        "extern_link": "https://awm.stadt-muenster.de/abfallvermeidung/schenken-und-tauschen.html",
+        "last_confirmation_date": "01.08.2020",
+        "street": null,
+        "house_number": null,
+        "zip_code": "48155",
+        "city": "MÜnster",
+        "image_id": 14,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Nienberge",
+        "description": "",
+        "latitude": 51.9928382,
+        "longitude": 7.541213,
+        "opening_hours": "We 08:30-13:00; Fr 12:00-19:00;",
+        "extern_link": "https://awm.stadt-muenster.de/abfallvermeidung/schenken-und-tauschen.html",
+        "last_confirmation_date": null,
+        "street": null,
+        "house_number": null,
+        "zip_code": "48161",
+        "city": "MÜnster",
+        "image_id": 15,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Kinderhaus",
+        "description": "",
+        "latitude": 51.999311,
+        "longitude": 7.6011876,
+        "opening_hours": "Tu 12:00-19:00; Th 08:30-13:00;",
+        "extern_link": "https://awm.stadt-muenster.de/abfallvermeidung/schenken-und-tauschen.html",
+        "last_confirmation_date": null,
+        "street": "Von-Humboldt-Stra\u00dfe",
+        "house_number": "50",
+        "zip_code": "48159",
+        "city": "MÜnster",
+        "image_id": 16,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Entsorgungszentrum Coerde",
+        "description": "",
+        "latitude": 52.0106179,
+        "longitude": 7.6511084,
+        "opening_hours": "Mo,Tu,We,Th,Fr 08:00-19:00; Sa 09:30-19:00; ",
+        "extern_link": "https://awm.stadt-muenster.de/abfallvermeidung/schenken-und-tauschen.html",
+        "last_confirmation_date": null,
+        "street": "Zum Heidehof",
+        "house_number": "80",
+        "zip_code": "48157",
+        "city": "MÜnster",
+        "image_id": 17,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "St. Mauritz",
+        "description": "",
+        "latitude": 51.9515959,
+        "longitude": 7.688231,
+        "opening_hours": "Mo 12:00-19:00;",
+        "extern_link": "https://awm.stadt-muenster.de/abfallvermeidung/schenken-und-tauschen.html",
+        "last_confirmation_date": null,
+        "street": null,
+        "house_number": null,
+        "zip_code": "48157",
+        "city": "MÜnster",
+        "image_id": 18,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Gievenbeck",
+        "description": "",
+        "latitude": 51.9591445,
+        "longitude": 7.5700582,
+        "opening_hours": "Tu,Th 12:00-19:00;",
+        "extern_link": "https://awm.stadt-muenster.de/abfallvermeidung/schenken-und-tauschen.html",
+        "last_confirmation_date": null,
+        "street": null,
+        "house_number": null,
+        "zip_code": "48161",
+        "city": "MÜnster",
+        "image_id": 19,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Mecklenbeck",
+        "description": "",
+        "latitude": 51.9308723,
+        "longitude": 7.5580042,
+        "opening_hours": "We 12:00-19:00; Fr[2] 12:00-19:00; ",
+        "extern_link": "https://awm.stadt-muenster.de/abfallvermeidung/schenken-und-tauschen.html",
+        "last_confirmation_date": null,
+        "street": "An der Hansalinie",
+        "house_number": "21",
+        "zip_code": "48163",
+        "city": "MÜnster",
+        "image_id": 20,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Handorf",
+        "description": "",
+        "latitude": 51.9888023,
+        "longitude": 7.7139396,
+        "opening_hours": "Tu 12:00-19:00;",
+        "extern_link": "https://awm.stadt-muenster.de/abfallvermeidung/schenken-und-tauschen.html",
+        "last_confirmation_date": null,
+        "street": null,
+        "house_number": null,
+        "zip_code": "48157",
+        "city": "MÜnster",
+        "image_id": 21,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Hiltrup",
+        "description": "",
+        "latitude": 51.8957208,
+        "longitude": 7.6436208,
+        "opening_hours": "Mo 12:00-19:00; We 08:30-13:00; Fr 12:00-19:00;",
+        "extern_link": "https://awm.stadt-muenster.de/abfallvermeidung/schenken-und-tauschen.html",
+        "last_confirmation_date": null,
+        "street": null,
+        "house_number": null,
+        "zip_code": "48165",
+        "city": "MÜnster",
+        "image_id": 22,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Roxel",
+        "description": "",
+        "latitude": 51.947372,
+        "longitude": 7.535231,
+        "opening_hours": "Mo,Th 12:00-19:00;",
+        "extern_link": "https://awm.stadt-muenster.de/abfallvermeidung/schenken-und-tauschen.html",
+        "last_confirmation_date": null,
+        "street": "Nottulner Landweg",
+        "house_number": "66",
+        "zip_code": "48161",
+        "city": "MÜnster",
+        "image_id": 23,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
+    },
+    {
+        "title": "Wolbeck",
+        "description": "",
+        "latitude": 51.9183324,
+        "longitude": 7.7203193,
+        "opening_hours": "Tu 12:00-19:00;Th 08:30-13:00;",
+        "extern_link": "https://awm.stadt-muenster.de/abfallvermeidung/schenken-und-tauschen.html",
+        "last_confirmation_date": null,
+        "street": "Eschstra\u00dfe",
+        "house_number": "79",
+        "zip_code": "48167",
+        "city": "MÜnster",
+        "image_id": 24,
+        "content": {
+            "books": true
+        },
+        "is_temporary": false,
+        "maintenance_needed": false,
+        "maintainer_info": ""
     }
 ]
