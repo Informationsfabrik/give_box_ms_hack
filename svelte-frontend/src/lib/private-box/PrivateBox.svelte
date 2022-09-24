@@ -105,7 +105,6 @@
 
 </script>
 
-<<<<<<< HEAD
 <h1>Private Box veröffentlichen</h1>
 <h3>Bitte stelle die benötigten Informationen für deine Box bereit.</h3>
 <hr />
@@ -214,20 +213,7 @@
 	<div>
 		<p>Durch hinzufügen deiner Box stimmst du unseren Bedingungen zu. <a href="#">AGB's</a>.</p>
 		<button type="submit" class="private-box-creation">Private Box erstellen</button>
-=======
-{#if box===100 && !errorOccured}
-<h1>Erstelle deine Box</h1>
-	<div id="app">
-		<h1>Upload Image</h1>
 
-		{#if avatar}
-			<img class="avatar" src="{avatar}" alt="d" />
-		{:else}
-			<p>No image uploaded</p>
-		{/if}
-		<button class="upload" on:click={()=>{fileinput.click();}}> Image upload </button>
-		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
->>>>>>> 1a0437a05d45cae4052f1ef88d5ce00f49475ad5
 	</div>
 <form>
 	<input bind:value="{longitude}" placeholder="Longitude">
