@@ -31,9 +31,9 @@ def get_user(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()
 
     return users
 
-@router.post("/add_user")
-def add_givebox(user: schemas.User, db: SessionLocal = Depends(get_db)):
+@router.post("/users")
+def add_user(user: schemas.User, db: SessionLocal = Depends(get_db)):
     new_user = models.User(**user.__dict__)
     db.add(new_user)
     db.commit()
-    return 200
+    return new_user.id

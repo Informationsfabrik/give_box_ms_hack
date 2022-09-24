@@ -1,9 +1,10 @@
 <script lang="ts">
     import Map from "$lib/map/Map.svelte";
     import MediaQuery from "$lib/media-query/MediaQuery.svelte";
+    import { ENV_OBJ } from '$lib/env'
 
     const getBoxes = async () => {
-		var response = await fetch('https://api.givebox-ms.de/giveboxes', { headers: {'mode':'no-cors'}});
+		var response = await fetch(ENV_OBJ.API_URL + '/giveboxes', { headers: {'mode':'no-cors'}});
 		var result = await response.json();
 		return result;
 	}
@@ -19,8 +20,8 @@
                 {#each box2 as box}
                 <a href="/box?{box['id']}">
                 <div class="box">
-                    <h4>{box["description"]}</h4>
-                    <p>{box["content"]}</p>
+                    <h4>{box["title"]}</h4>
+                    <p>{box["street"]}</p>
                 </div>
             </a>
                 {/each}
@@ -46,8 +47,8 @@
                 {#each box2 as box}
                 <a href="/box?{box['id']}">
                 <div class="box">
-                    <h4>{box["description"]}</h4>
-                    <p>{box["content"]}</p>
+                    <h4>{box["title"]}</h4>
+                    <p>{box["street"]}</p>
                 </div>
             </a>
                 {/each}
@@ -71,8 +72,8 @@
                 {#each box2 as box}
                 <a href="/box?{box['id']}">
                 <div class="box">
-                    <h4>{box["description"]}</h4>
-                    <p>{box["content"]}</p>
+                    <h4>{box["title"]}</h4>
+                    <p>{box["street"]}</p>
                 </div>
             </a>
                 {/each}

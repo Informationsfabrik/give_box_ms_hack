@@ -4,13 +4,6 @@ from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float, Date
 from sqlalchemy.orm import relationship
 from database import Base
 
-class Comment(Base):
-    __tablename__ = "Comments"
-    id = Column(Integer, primary_key=True, index=True)
-    box_id = Column(Integer, ForeignKey("GiveBoxes.id"), nullable = False)
-    user_id = Column(Integer, ForeignKey("Users.id"), nullable = False)
-    text = Column(String)
-    timestamp = Column(DateTime)
 
 user_givebox_association = Table(
     "user_givebox_association",
@@ -39,6 +32,7 @@ class GiveBox(Base):
     latitude = Column(Float)
     opening_hours = Column(String)
     is_temporary = Column(Boolean)
+    title = Column(String)
     description = Column(String)
     extern_link = Column(String)
     last_confirmation_date = Column(DateTime, nullable = True)
@@ -51,3 +45,22 @@ class GiveBox(Base):
     zip_code = Column(Integer)
     city = Column(String)
     maintainers = relationship("User", secondary=user_givebox_association, back_populates="maintained_boxes")
+
+class Comment(Base):
+    __tablename__ = "Comments"
+    id = Column(Integer, primary_key=True, index=True)
+    box_id = Column(Integer, ForeignKey("GiveBoxes.id"))
+    box = relationship("GiveBox")
+    user_id = Column(Integer, ForeignKey("Users.id"))
+    user = relationship("User")
+
+    text = Column(String)
+    timestamp = Column(DateTime)
+
+class Image(Base):
+    __tablename__ = "Images"
+    id = Column(Integer, primary_key=True, index=True)
+    box_id = Column(Integer, ForeignKey("GiveBoxes.id"))
+    box = relationship("GiveBox")    
+    path = Column(String)
+    is_title_image = Column(Boolean)
