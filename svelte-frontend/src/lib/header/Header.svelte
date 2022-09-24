@@ -66,6 +66,7 @@
       display: flex;
       align-items: center;
       height: 100%;
+      z-index: 99999;
     }
   
     .mobile-icon {
@@ -142,6 +143,7 @@
       height: calc(100% - 45px);
       bottom: 0;
       left: 0;
+      z-index: 999;
     }
   
     .navbar-list li {
