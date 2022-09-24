@@ -49,7 +49,9 @@ class Givebox(GiveboxBase):
     maintainers : List[User] = []
 
 class Comment(BaseModel):
-    user: User
-    box: Givebox
-    text: str
-    timestamp: datetime
+    user_id: Optional[int]
+    user: Optional[User]
+    box_id: Optional[int]
+    box: Optional[Givebox]
+    text: Optional[str]
+    timestamp: Optional[datetime]
