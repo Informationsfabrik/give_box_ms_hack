@@ -62,3 +62,4 @@ class Image(Base):
     box_id = Column(Integer, ForeignKey("GiveBoxes.id"))
     box = relationship("GiveBox")    
     path = Column(String)
+    is_title_image = Column(Boolean)

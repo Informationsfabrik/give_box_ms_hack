@@ -59,3 +59,4 @@ class Comment(BaseModel):
 class Image(BaseModel):
     box_id: Optional[int]
     data: Optional[str]
+    is_title_image: Optional[bool]
