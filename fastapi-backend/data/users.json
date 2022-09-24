@@ -1,0 +1,12 @@
+[
+    {
+        "lastname": "Mensing",
+        "firstname": "Rainer",
+        "email": "rainer.mensing@hotmail.de",
+        "password": "#MSHack!",
+        "street": "Hafenweg",
+        "house_number": 16,
+        "zip_code": 48155,
+        "city": "Münster"
+    }
+]
