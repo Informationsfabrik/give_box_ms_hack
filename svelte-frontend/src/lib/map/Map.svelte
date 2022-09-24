@@ -21,7 +21,6 @@
     const getBoxes = async () => {
 		var response = await fetch('http://localhost:8081/giveboxes', { headers: {'mode':'no-cors'}});
 		var result = await response.json();
-        console.log(result);
 		return result;
 	}
 
@@ -37,7 +36,6 @@
 
             let result = await getBoxes();
             result.forEach(function (value) {
-                console.log(value);
                 addMarker(value);
             });
         }
@@ -45,9 +43,11 @@
 
 
     function addMarker(marker) {
-        loc = [marker.longitude, marker.latitude]
-        leaflet.marker(loc).addTo(map).on('click', function(e) {
-            descr_obj = marker;
+        loc = [marker.latitude, marker.longitude]
+        leaflet.marker(loc).addTo(map).on('click', async (e) => {
+            let response = await fetch('http://localhost:8081/giveboxes/' + marker.id, { headers: {'mode':'no-cors'}});
+            var result = await response.json();
+            descr_obj = result;
             snackbar_val = true;
         });
     }
