@@ -24,6 +24,7 @@
 		{/each}
 	</table>
 	<img src="https://api.givebox-ms.de/giveboxes/image/{boxId}" alt="image of a givebox" />
+<!--	<img src="http://127.0.0.1:8081/data/images/{boxId}" alt="image of a givebox" />-->
 {/await}
 <style>
 </style>
