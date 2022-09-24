@@ -1,9 +1,12 @@
 
 <script>
     import { onMount } from "svelte";
+    import { Button, Dialog, MaterialApp } from 'svelte-materialify';
+    import PrivateBox from "$lib/private-box/PrivateBox.svelte";
   
     // Show mobile icon and display menu
     let showMobileMenu = false;
+    let activeCreation = false;;
   
     // List of navigation items
     const navItems = [
@@ -13,8 +16,8 @@
       { label: "About", href: "/about" },
       { label: "QR Codes", href: "/qr-codes" },
       { label: "Rules", href: "/rules" },
-      { label: "Map", href: "/map" },
-      { label: "Box erstellen", href: "/private-box"}
+      { label: "Map", href: "/map" }
+      //{ label: "Box erstellen", href: "/private-box"}
     ];
   
     // Mobile menu click event handler
@@ -34,6 +37,10 @@
   
       mediaListener.addListener(mediaQueryHandler);
     });
+
+    function closeModal() {
+      activeCreation = false;
+    }
   </script>
   
   <nav>
@@ -47,9 +54,17 @@
             <a href={item.href}>{item.label}</a>
           </li>
         {/each}
+        <li>
+          <a on:click={() => activeCreation = true}>Box erstellen</a>
+        </li>
       </ul>
     </div>
   </nav>
+  <MaterialApp>
+    <Dialog class="pa-4 text-center" bind:active={activeCreation}>
+      <PrivateBox closeModal={closeModal}/>
+    </Dialog>
+  </MaterialApp>
   
   <style>
     nav {

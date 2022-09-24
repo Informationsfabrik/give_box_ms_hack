@@ -17,6 +17,9 @@
 	let city;
 	let maintainer = [];
 
+	export let closeModal;
+	let errorOccured = false;
+	let erroMsg = "";
 
 	let book = false;
 	let clothes = false;
@@ -55,16 +58,39 @@
 			"maintainer":maintainer
 		}
 
+		box = 100;
+
 		box = await fetch(ENV_OBJ.API_URL + '/giveboxes/', {
 			method: 'POST',
 			body: JSON.stringify(dict),
 			headers: {'mode':'no-cors', 'content-type': 'application/json'}
-		}).then((res) => res.json())
+		}).then(res => {
+			if(!res.ok) {
+				return res.text().then(text => { throw new Error(text) })
+			}
+			else {
+				return res.json();
+			}    
+		})
+		.catch(err => {
+			errorOccured = true;
+			erroMsg = err
+			console.log('caught it!',err);
+		});
+		/*
+		if (response.ok) {
+			box = await response.json();
+		} else {
+			errorOccured = true;
+			erroMsg = await response.text()
+		}
+		*/
+		
 	}
 
 </script>
 
-{#if box===100}
+{#if box===100 && !errorOccured}
 <form>
 	<input bind:value="{longitude}" placeholder="Longitude">
 	<input bind:value="{latitude}" placeholder="Latitude">
@@ -83,9 +109,13 @@
 
 </form>
 <button on:click={submit}>Submit</button>
-{:else if box === 200}
+{:else if errorOccured}
+	<h1>Error Occured!</h1>
+	<div>{erroMsg}</div>
+	<a on:click={() => closeModal()}>Back</a>
+{:else if box !== 100}
 	<h1>Thank you</h1>
-	<a href="/">Back</a>
+	<a on:click={() => closeModal()}>Back</a>
 {/if}
 
 <style>
