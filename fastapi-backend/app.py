@@ -55,3 +55,10 @@ app.include_router(giveboxes.router, tags=["Givebox"])
 app.include_router(comments.router, tags=["Comments"])
 app.include_router(users.router, tags=["Users"])
 app.include_router(user_box_association.router, tags=["User Givebox Association"])
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    app.root_path = ""
+    uvicorn.run(app=app, host="127.0.0.1", port=8081, debug=True)

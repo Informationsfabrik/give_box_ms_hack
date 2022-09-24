@@ -32,7 +32,7 @@ def get_givebox_list(db: Session = Depends(get_db)) -> List[schemas.GiveboxBase]
 
 @router.post("/giveboxes")
 def post_givebox(box: schemas.Givebox, db: SessionLocal = Depends(get_db)):
-    new_box = models.GiveBox(**box.__dict__)
+    new_box = models.GiveBox(**box.dict())
     db.add(new_box)
     db.commit()
     return 200
