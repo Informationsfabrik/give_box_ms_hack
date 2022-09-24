@@ -1,12 +1,9 @@
 <script>
+	import { ENV_OBJ } from '$lib/env'
 	export let boxId;
 	
 	const getBox = async () => {
-<<<<<<< HEAD
-		var response = await fetch('https://api.givebox-ms.de/giveboxes/' + boxId, { headers: {'mode':'no-cors'}});
-=======
-		var response = await fetch('http://localhost:8081/giveboxes/' + boxId, { headers: {'mode':'no-cors'}});
->>>>>>> feature/map-marker
+		var response = await fetch(ENV_OBJ.API_URL + '/giveboxes/' + boxId, { headers: {'mode':'no-cors'}});
 		var result = await response.json();
 		return result;
 	}

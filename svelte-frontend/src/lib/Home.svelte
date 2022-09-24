@@ -1,9 +1,10 @@
 <script lang="ts">
     import Map from "$lib/map/Map.svelte";
     import MediaQuery from "$lib/media-query/MediaQuery.svelte";
+    import { ENV_OBJ } from '$lib/env'
 
     const getBoxes = async () => {
-		var response = await fetch('https://api.givebox-ms.de/giveboxes', { headers: {'mode':'no-cors'}});
+		var response = await fetch(ENV_OBJ.API_URL + '/giveboxes', { headers: {'mode':'no-cors'}});
 		var result = await response.json();
 		return result;
 	}

@@ -3,6 +3,7 @@
     import { browser } from '$app/environment';
     import { Snackbar, Button, ClickOutside, MaterialApp  } from 'svelte-materialify';
     import ShortDescription from "$lib/short_description/ShortDescription.svelte";
+    import { ENV_OBJ } from '$lib/env'
     let leaflet;
     
     let mapElement;
@@ -19,7 +20,7 @@
     }
 
     const getBoxes = async () => {
-		var response = await fetch('http://localhost:8081/giveboxes', { headers: {'mode':'no-cors'}});
+		var response = await fetch(ENV_OBJ.API_URL +'/giveboxes', { headers: {'mode':'no-cors'}});
 		var result = await response.json();
 		return result;
 	}
@@ -45,7 +46,7 @@
     function addMarker(marker) {
         loc = [marker.latitude, marker.longitude]
         leaflet.marker(loc).addTo(map).on('click', async (e) => {
-            let response = await fetch('http://localhost:8081/giveboxes/' + marker.id, { headers: {'mode':'no-cors'}});
+            let response = await fetch(ENV_OBJ.API_URL +'/giveboxes/' + marker.id, { headers: {'mode':'no-cors'}});
             var result = await response.json();
             descr_obj = result;
             snackbar_val = true;
