@@ -54,7 +54,7 @@
 </script>
 
     <map>
-        <div bind:this={mapElement} class="flex-column"></div>
+        <div bind:this={mapElement} id="map"></div>
         <button on:click={() => addMarker()}>bla</button>
         <div 
         use:ClickOutside 
@@ -75,6 +75,8 @@
 <style>
     @import 'leaflet/dist/leaflet.css';
     map div {
-        height: 800px;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
     }
 </style>

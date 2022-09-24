@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import models
 from database import engine
 
-from routers import giveboxes, comments, users, user_box_association
+from routers import giveboxes, comments, users, user_box_association, images
 
 # Create DB
 models.Base.metadata.create_all(bind=engine)
@@ -55,6 +55,7 @@ app.include_router(giveboxes.router, tags=["Givebox"])
 app.include_router(comments.router, tags=["Comments"])
 app.include_router(users.router, tags=["Users"])
 app.include_router(user_box_association.router, tags=["User Givebox Association"])
+app.include_router(images.router, tags=["Images"])
 
 
 if __name__ == "__main__":
