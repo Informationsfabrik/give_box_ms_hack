@@ -1,3 +1,4 @@
+from datetime import datetime
 from fastapi import APIRouter, Depends
 from starlette.responses import RedirectResponse
 from starlette import status
@@ -33,6 +34,9 @@ def post_comment(comment :schemas.Comment, db: Session = Depends(get_db)):
     comment = models.Comment(**comment.dict())
     comment.user = user
     comment.box = box
+
+    timestamp = datetime.now()
+    comment.timestamp = timestamp
 
     db.add(comment)
     db.commit()
