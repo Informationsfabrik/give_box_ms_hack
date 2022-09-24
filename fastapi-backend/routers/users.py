@@ -36,4 +36,4 @@ def add_user(user: schemas.User, db: SessionLocal = Depends(get_db)):
     new_user = models.User(**user.__dict__)
     db.add(new_user)
     db.commit()
-    return 200
+    return new_user.id

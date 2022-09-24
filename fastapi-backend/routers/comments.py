@@ -41,4 +41,4 @@ def post_comment(comment :schemas.Comment, db: Session = Depends(get_db)):
     db.add(comment)
     db.commit()
 
-    return 200
+    return comment.id
