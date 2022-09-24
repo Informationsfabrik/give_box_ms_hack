@@ -1,8 +1,9 @@
 <script>
+	import { ENV_OBJ } from '$lib/env'
 	export let boxId;
 	
 	const getBox = async () => {
-		var response = await fetch('https://api.givebox-ms.de/givebox/' + boxId, { headers: {'mode':'no-cors'}});
+		var response = await fetch(ENV_OBJ.API_URL + '/giveboxes/' + boxId, { headers: {'mode':'no-cors'}});
 		var result = await response.json();
 		return result;
 	}
@@ -22,6 +23,7 @@
 			</tr>
 		{/each}
 	</table>
+	<img src="https://api.givebox-ms.de/giveboxes/image/{boxId}" alt="image of a givebox" />
 {/await}
 <style>
 </style>

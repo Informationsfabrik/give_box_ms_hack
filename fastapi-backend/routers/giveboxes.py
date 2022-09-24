@@ -1,3 +1,4 @@
+from pathlib import Path
 from database import SessionLocal
 from fastapi import APIRouter, Depends
 from typing import List
@@ -5,8 +6,15 @@ from sqlalchemy.orm import Session, joinedload
 from utils import get_db
 import models
 import schemas
+from fastapi.responses import FileResponse
+
 
 router = APIRouter()
+
+
+@router.get("/giveboxes/image/{id_}")
+def get_givebox_image(id_: int):
+    return FileResponse(Path(f"data/images/{id_}.jpg"))
 
 
 @router.get("/giveboxes/{id_}")
@@ -35,4 +43,4 @@ def post_givebox(box: schemas.Givebox, db: SessionLocal = Depends(get_db)):
     new_box = models.GiveBox(**box.dict())
     db.add(new_box)
     db.commit()
-    return 200
+    return new_box.id

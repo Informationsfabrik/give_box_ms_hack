@@ -14,6 +14,7 @@
       { label: "QR Codes", href: "/qr-codes" },
       { label: "Rules", href: "/rules" },
       { label: "Map", href: "/map" },
+      { label: "Box erstellen", href: "/private-box"}
     ];
   
     // Mobile menu click event handler
@@ -66,6 +67,7 @@
       display: flex;
       align-items: center;
       height: 100%;
+      z-index: 99999;
     }
   
     .mobile-icon {
@@ -142,6 +144,7 @@
       height: calc(100% - 45px);
       bottom: 0;
       left: 0;
+      z-index: 999;
     }
   
     .navbar-list li {

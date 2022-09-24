@@ -3,6 +3,7 @@
     import { browser } from '$app/environment';
     import { Snackbar, Button, ClickOutside, MaterialApp  } from 'svelte-materialify';
     import ShortDescription from "$lib/short_description/ShortDescription.svelte";
+    import { ENV_OBJ } from '$lib/env'
     let leaflet;
     
     let mapElement;
@@ -18,24 +19,36 @@
         "opening_hours": "11- 20"
     }
 
+    const getBoxes = async () => {
+		var response = await fetch(ENV_OBJ.API_URL +'/giveboxes', { headers: {'mode':'no-cors'}});
+		var result = await response.json();
+		return result;
+	}
+
     onMount(async () => {
         if(browser) {
             leaflet = (await import('leaflet')).default;
 
-            map = leaflet.map(mapElement).setView([51.961940, 7.626057], 16);
+            map = leaflet.map(mapElement).setView([51.961940, 7.626057], 14);
 
             leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
+
+            let result = await getBoxes();
+            result.forEach(function (value) {
+                addMarker(value);
+            });
         }
     });
 
 
-    function addMarker() {
-        loc = [loc[0] + 0.001, loc[1] + 0.001]
-        leaflet.marker(loc).addTo(map).on('click', function(e) {
-            console.log(e.latlng);
-            console.log(e);
+    function addMarker(marker) {
+        loc = [marker.latitude, marker.longitude]
+        leaflet.marker(loc).addTo(map).on('click', async (e) => {
+            let response = await fetch(ENV_OBJ.API_URL +'/giveboxes/' + marker.id, { headers: {'mode':'no-cors'}});
+            var result = await response.json();
+            descr_obj = result;
             snackbar_val = true;
         });
     }
@@ -54,7 +67,7 @@
 </script>
 
     <map>
-        <div bind:this={mapElement} class="flex-column"></div>
+        <div bind:this={mapElement} id="map"></div>
         <button on:click={() => addMarker()}>bla</button>
         <div 
         use:ClickOutside 
@@ -75,6 +88,8 @@
 <style>
     @import 'leaflet/dist/leaflet.css';
     map div {
-        height: 800px;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
     }
 </style>
