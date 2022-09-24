@@ -213,34 +213,7 @@
 	<div>
 		<p>Durch hinzufügen deiner Box stimmst du unseren Bedingungen zu. <a href="#">AGB's</a>.</p>
 		<button type="submit" class="private-box-creation">Private Box erstellen</button>
-
-	</div>
-<form>
-	<input bind:value="{longitude}" placeholder="Longitude">
-	<input bind:value="{latitude}" placeholder="Latitude">
-	<input bind:value="{description}" placeholder="Beschreibung">
-	<input bind:value="{opening_hours}" placeholder="Öffnungszeiten">
-	<input bind:value="{street}" placeholder="Staße">
-	<input bind:value="{house_number}" placeholder="Hausnummer">
-	<input bind:value="{zip_code}" placeholder="Postleitzahl">
-	<input bind:value="{city}" placeholder="Stadt">
-
-	<label>Bücher<input type="checkbox" on:change={(e) => {book =e.target.checked}}></label>
-	<label>Kleidung<input type="checkbox" on:change={ (e) => {clothes =e.target.checked}}></label>
-	<label>Elektronik<input type="checkbox" on:change={(e) => {electronics =e.target.checked}}></label>
-	<label>Spielzeug<input type="checkbox" on:change={ (e) => {toys =e.target.checked}}></label>
-	<input bind:value="{others}" placeholder="Sonstiges">
-
 </form>
-<button on:click={submit}>Submit</button>
-{:else if errorOccured}
-	<h1>Error Occured!</h1>
-	<div>{erroMsg}</div>
-	<a on:click={() => closeModal()}>Back</a>
-{:else if box !== 100}
-	<h1>Thank you</h1>
-	<a on:click={() => closeModal()}>Back</a>
-{/if}
 
 <style>
 	Input, button{
