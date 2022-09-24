@@ -1,229 +1,10 @@
 {
 	"info": {
-		"_postman_id": "972fb7e1-e4bf-42c3-ad17-7c310751f96d",
-		"name": "fastapi",
+		"_postman_id": "5e767cad-9cb6-4153-82d7-2b290c188e1b",
+		"name": "fastapi Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "get todos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8081/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8081",
-					"path": [
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "add todo",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": "sport",
-							"type": "default"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8081/add",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8081",
-					"path": [
-						"add"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete todo",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8081/delete/1",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8081",
-					"path": [
-						"delete",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "update todo",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8081/update/1",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8081",
-					"path": [
-						"update",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "test",
-							"type": "default"
-						},
-						{
-							"key": "password",
-							"value": "test",
-							"type": "default"
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8081/login",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8081",
-					"path": [
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "register",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "test",
-							"type": "default"
-						},
-						{
-							"key": "password",
-							"value": "test",
-							"type": "default"
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8081/register",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8081",
-					"path": [
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "items",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNjYzNzU5MzYwLCJuYmYiOjE2NjM3NTkzNjAsImp0aSI6IjgxMmFkOTZlLTJlYTktNDU2Ny1iY2VkLWExNjVlNWRlN2U5NCIsImV4cCI6MTY2Mzc2MDI2MCwidHlwZSI6ImFjY2VzcyIsImZyZXNoIjpmYWxzZX0.M3c9F7ZwUjV2G9IrO18Dwv2uMbprSlO7vXF2DvGPppg",
-						"type": "default"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8081/items",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8081",
-					"path": [
-						"items"
-					]
-				}
-			},
-			"response": []
-		},
 		{
 			"name": "add_givebox",
 			"request": {
@@ -231,7 +12,49 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"longitude\" : 51.970527,\r\n    \"latitude\" : 7.624340,\r\n    \"description\" : \"Kreuzkirche\",\r\n    \"address_id\": 1,\r\n    \"image_id\" : 1,\r\n    \"extern_link\" : \"http://wiki.muenster.org/index.php/Öffentliche_Bücherregale_in_Münster\",\r\n    \"content\" : {\"book\": true, \"clothes\": false, \"toys\": false, \"electronics\": false, \"other\": \"Besen, Kehrblech und co :)\"},\r\n    \"is_temporary\" : false,\r\n    \"last_confirmation_date\" : \"2020-01-01 00:00:00\",\r\n    \"maintenance_needed\" : false,\r\n    \"maintainer_info\" : \"\",\r\n    \"opening_hours\" : \"\",\r\n    \"street\": \"Hoyastraße\",\r\n    \"house_number\": 17,\r\n    \"zip_code\": 48147,\r\n    \"city\": \"Münster\"\r\n}",
+					"raw": "{\r\n    \"longitude\" : 7.624340,\r\n    \"latitude\" : 51.970527,\r\n    \"description\" : \"Kreuzkirche\",\r\n    \"address_id\": 1,\r\n    \"image_id\" : 1,\r\n    \"extern_link\" : \"http://wiki.muenster.org/index.php/Öffentliche_Bücherregale_in_Münster\",\r\n    \"content\" : {\"book\": true, \"clothes\": false, \"toys\": false, \"electronics\": false, \"other\": \"Besen, Kehrblech und co :)\"},\r\n    \"is_temporary\" : false,\r\n    \"last_confirmation_date\" : \"2020-01-01 00:00:00\",\r\n    \"maintenance_needed\" : false,\r\n    \"maintainer_info\" : \"\",\r\n    \"opening_hours\" : \"24/7\",\r\n    \"street\": \"Hoyastraße\",\r\n    \"house_number\": 17,\r\n    \"zip_code\": 48147,\r\n    \"city\": \"Münster\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8081/giveboxes",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8081",
+					"path": [
+						"giveboxes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_givebox2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"longitude\" : 7.6583182,\r\n    \"latitude\" : 51.9670045,\r\n    \"description\" : \"Danziger Freiheit\",\r\n    \"address_id\": 1,\r\n    \"image_id\" : 1,\r\n    \"extern_link\" : \"https://hvghirten.jimdofree.com/-/sozialraumaktivit%C3%A4ten/ska-treff/\",\r\n    \"content\" : {\"book\": true, \"clothes\": true, \"toys\": true, \"electronics\": false, \"other\": \"\"},\r\n    \"is_temporary\" : false,\r\n    \"last_confirmation_date\" : \"2020-01-01 00:00:00\",\r\n    \"maintenance_needed\" : false,\r\n    \"maintainer_info\" : \"Für konstenlose Müllentsorgung am Bauhof bitte Karte anfragen bei 0251/986225-66\",\r\n    \"opening_hours\" : \"24/7\",\r\n    \"street\": \"Hoyastraße\",\r\n    \"house_number\": 17,\r\n    \"zip_code\": 48147,\r\n    \"city\": \"Münster\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
