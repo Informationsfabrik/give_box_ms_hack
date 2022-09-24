@@ -1,124 +1,95 @@
-<script>
-	import ImageUpload from '$lib/imageupload/ImageUpload.svelte';
-	// longitude = Column(Float)
-	// latitude = Column(Float)
-	// address = Column(Integer, ForeignKey("Addresses.id"), nullable = False)
-	// opening_hours = Column(String)
-	// is_temporary = Column(Boolean)
-	// description = Column(String)
-	// last_confirmation_date = Column(DateTime)
-	// maintainer = relationship("User", secondary=user_givebox_association,back_populates="giveboxes")
-	// image_link = Column(String)
-	// tags = Column(JSON)
+<script lang="ts">
+	let longitude;
+	let latitude;
+	let is_temporary = true;
+	let description;
+	let address_id = 999;
+	let opening_hours;
+	let extern_link = "";
+	let maintenance_needed = false;
+	let maintainer_info = "hmm";
+	let last_confirmation_date = "2020-01-01 00:00:00";
+	let image_id = 2;
+	let street;
+	let house_number;
+	let zip_code;
+	let city;
+	let maintainer = [];
+
+
+	let book = false;
+	let clothes = false;
+	let electronics = false;
+	let toys = false;
+	let others = "";
+
+	let box = 100;
+
+
+	async function submit() {
+
+		var dict = {
+			"longitude": Number(longitude),
+			"latitude": Number(latitude),
+			"is_temporary": is_temporary,
+			"description": description,
+			"address_id": address_id,
+			"opening_hours": opening_hours,
+			"extern_link": extern_link,
+			"content": {
+				"book": book,
+				"clothes": clothes,
+				"electronics": electronics,
+				"toys": toys,
+				"others": others,
+			},
+			"maintenance_needed": maintenance_needed,
+			"maintainer_info": maintainer_info,
+			"last_confirmation_date": last_confirmation_date,
+			"image_id": Number(image_id),
+			"street": street,
+			"house_number": Number(house_number),
+			"zip_code": Number(zip_code),
+			"city": city,
+			"maintainer":maintainer
+		}
+
+		box = await fetch('http://127.0.0.1:8081/giveboxes', {
+			method: 'POST',
+			body: JSON.stringify(dict),
+			headers: {'mode':'no-cors', 'content-type': 'application/json'}
+		}).then((res) => res.json())
+	}
+
 </script>
 
-<h1>Private Box veröffentlichen</h1>
-<h3>Bitte stelle die benötigten Informationen für deine Box bereit.</h3>
-<hr />
+{#if box===100}
 <form>
-	<div>
-		<label for="longitude"><b>Longitude</b></label>
-        <br>
-		<input
-			type="text"
-			placeholder="Gebe deinen Box longitude ein."
-			name="longitude"
-			id="longitude"
-			required
-		/>
-	</div>
-	<div>
-		<label for="latitude"><b>Longitude</b></label>
-		<br>
-		<input
-				type="text"
-				placeholder="Gebe deinen Box latitude ein."
-				name="latitude"
-				id="latitude"
-				required
-		/>
-	</div>
-	<div>
-		<label for="address"><b>Adresse</b></label>
-		<br>
-		<input
-				type="text"
-				placeholder="Gib deine Adresse ein."
-				name="address"
-				id="address"
-				required
-		/>
-	</div>
-	<div>
-		<label for="opening_hours"><b>opening_hours</b></label>
-		<br>
-		<input
-				type="text"
-				placeholder="Gib deine opening_hours ein."
-				name="opening_hours"
-				id="opening_hours"
-				required
-		/>
-	</div>
-	<div>
-		<label for="is_temporary"><b>is_temporary</b></label>
-		<br>
-		<input
-				type="text"
-				placeholder="Gib deine is_temporary ein."
-				name="is_temporary"
-				id="is_temporary"
-				required
-		/>
-	</div>
-	<div>
-		<label for="description"><b>description</b></label>
-        <br>
-		<input
-			type="text"
-			placeholder="Beschreibe deine Box und deren Inhalte"
-			name="description"
-			id="description"
-			required
-		/>
-	</div>
-	<div>
-		<label for="last_confirmation_date"><b>last_confirmation_date</b></label>
-		<br>
-		<input
-				type="text"
-				placeholder="last_confirmation_date"
-				name="last_confirmation_date"
-				id="last_confirmation_date"
-				required
-		/>
-	</div>
-	<div>
-		<label for="image_link"><b>image_link</b></label>
-		<br>
-		<input
-				type="text"
-				placeholder="image_link"
-				name="image_link"
-				id="image_link"
-				required
-		/>
-	</div>
-	<div>
-		<label for="tags"><b>tags</b></label>
+	<input bind:value="{longitude}" placeholder="Longitude">
+	<input bind:value="{latitude}" placeholder="Latitude">
+	<input bind:value="{description}" placeholder="Beschreibung">
+	<input bind:value="{opening_hours}" placeholder="Öffnungszeiten">
+	<input bind:value="{street}" placeholder="Staße">
+	<input bind:value="{house_number}" placeholder="Hausnummer">
+	<input bind:value="{zip_code}" placeholder="Postleitzahl">
+	<input bind:value="{city}" placeholder="Stadt">
 
-		<select name="tags" id="tags" form="tags" required>
-			<option value="bücher">Bücher</option>
-			<option value="spielzeug">Spielzeug</option>
-			<option value="kleidung">Kleidung</option>
-			<option value="deko">Deko</option>
-			<option value="möbel">Möbel</option>
-			<option value="sonstiges">Sonstiges</option>
-		</select>
-	</div>
-    <ImageUpload />
-	<div>
-		<p>Durch hinzufügen deiner Box stimmst du unseren Bedingungen zu.<a href="#">AGB's</a>.</p>
-		<button type="submit" class="private-box-creation">Private Box erstellen</button>
-	</div>
+	<label>Bücher<input type="checkbox" on:change={(e) => {book =e.target.checked}}></label>
+	<label>Kleidung<input type="checkbox" on:change={ (e) => {clothes =e.target.checked}}></label>
+	<label>Elektronik<input type="checkbox" on:change={(e) => {electronics =e.target.checked}}></label>
+	<label>Spielzeug<input type="checkbox" on:change={ (e) => {toys =e.target.checked}}></label>
+	<input bind:value="{others}" placeholder="Sonstiges">
+
 </form>
+<button on:click={submit}>Submit</button>
+{:else if box === 200}
+	<h1>Thank you</h1>
+	<a href="/">Back</a>
+{/if}
+
+<style>
+	Input, button{
+		display:block;
+		margin:10px;
+	}
+</style>
