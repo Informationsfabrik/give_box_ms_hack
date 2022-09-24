@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ENV_OBJ } from '$lib/env'
 	let longitude;
 	let latitude;
 	let is_temporary = true;
@@ -54,7 +55,7 @@
 			"maintainer":maintainer
 		}
 
-		box = await fetch('http://127.0.0.1:8081/giveboxes', {
+		box = await fetch(ENV_OBJ.API_URL + '/giveboxes/', {
 			method: 'POST',
 			body: JSON.stringify(dict),
 			headers: {'mode':'no-cors', 'content-type': 'application/json'}
