@@ -18,24 +18,36 @@
         "opening_hours": "11- 20"
     }
 
+    const getBoxes = async () => {
+		var response = await fetch('http://localhost:8081/giveboxes', { headers: {'mode':'no-cors'}});
+		var result = await response.json();
+        console.log(result);
+		return result;
+	}
+
     onMount(async () => {
         if(browser) {
             leaflet = (await import('leaflet')).default;
 
-            map = leaflet.map(mapElement).setView([51.961940, 7.626057], 16);
+            map = leaflet.map(mapElement).setView([51.961940, 7.626057], 14);
 
             leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
+
+            let result = await getBoxes();
+            result.forEach(function (value) {
+                console.log(value);
+                addMarker(value);
+            });
         }
     });
 
 
-    function addMarker() {
-        loc = [loc[0] + 0.001, loc[1] + 0.001]
+    function addMarker(marker) {
+        loc = [marker.longitude, marker.latitude]
         leaflet.marker(loc).addTo(map).on('click', function(e) {
-            console.log(e.latlng);
-            console.log(e);
+            descr_obj = marker;
             snackbar_val = true;
         });
     }

@@ -2,7 +2,7 @@
 	export let boxId;
 	
 	const getBox = async () => {
-		var response = await fetch('http://localhost:8081/givebox/' + boxId, { headers: {'mode':'no-cors'}});
+		var response = await fetch('http://localhost:8081/giveboxes/' + boxId, { headers: {'mode':'no-cors'}});
 		var result = await response.json();
 		return result;
 	}
