@@ -2,17 +2,12 @@ import requests
 import json
 import os
 
-try:
-    if os.environ['ENV'] == 'prod':
-        server = 'https://api.givebox-ms.de/'
-    else:
-        server = 'http://localhost:8081/'
-except:
+if os.getenv("PROD", 0) == 1:
+    server = "http://api.givebox-ms.de/"
+else:
     server = 'http://localhost:8081/'
 
-
-
-def load_base_data(router,server = server):
+def load_base_data(router, server = server):
     with open("data/"+router+".json") as json_file:
         data = json.load(json_file)
         for item in data:
@@ -23,7 +18,7 @@ load_base_data("giveboxes")
 load_base_data("users")
 
 
-def load_demo_maintainer(router,server = server):
+def load_demo_maintainer(router, server = server):
     with open("data/"+router+".json") as json_file:
         data = json.load(json_file)
         for item in data:

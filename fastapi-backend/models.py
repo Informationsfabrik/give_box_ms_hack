@@ -32,6 +32,7 @@ class GiveBox(Base):
     latitude = Column(Float)
     opening_hours = Column(String)
     is_temporary = Column(Boolean)
+    title = Column(String)
     description = Column(String)
     extern_link = Column(String)
     last_confirmation_date = Column(DateTime, nullable = True)
