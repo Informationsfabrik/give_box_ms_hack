@@ -8,6 +8,6 @@ def load_base_date(router):
         for item in data:
             requests.post('http://127.0.0.1:8081/'+router, json=item)
 
-#load_base_date("giveboxes")
+load_base_date("giveboxes")
 
-load_base_date("users")
+#load_base_date("users")
