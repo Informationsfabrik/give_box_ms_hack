@@ -18,7 +18,7 @@ def string_to_image(source_path : str, destination_path: str):
     decodeit.write(base64.b64decode((byte)))
     decodeit.close()
 
-# write_image_as_string_to_file("C:/Users/lanozie/Pictures/Informationsfabrik_Logo_4c_ohne Slogan.jpg",
+#write_image_as_string_to_file("C:/Users/lanozie/Pictures/Informationsfabrik_Logo_4c_ohne Slogan.jpg",
 # "C:/Users/lanozie/Pictures/Informationsfabrik_Logo_4c_ohne Slogan.bin")
 
 
