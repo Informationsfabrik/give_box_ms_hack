@@ -4,17 +4,17 @@ from typing import Optional, List
 
 class UserBase(BaseModel):
     id: Optional[int]
-    lastname: str
-    firstname: str
+    lastname: Optional[str]
+    firstname: Optional[str]
 
 
 class User(UserBase):
-    email: str
-    password: str
-    street: str
-    house_number: int
-    zip_code: int
-    city: str
+    email: Optional[str]
+    password: Optional[str]
+    street: Optional[str]
+    house_number: Optional[int]
+    zip_code: Optional[int]
+    city: Optional[str]
 
 
 class Content(BaseModel):
