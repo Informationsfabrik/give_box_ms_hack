@@ -11,7 +11,7 @@
 
 	let boxPromise = getBoxes();
 </script>
-
+<!-- 
 <MediaQuery query="(min-width: 1281px)" let:matches>
 	{#if matches}
 	<div class="container">
@@ -124,3 +124,4 @@
         padding: 5px;
     }
 </style>
+ -->

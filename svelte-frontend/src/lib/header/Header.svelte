@@ -15,7 +15,6 @@
       { label: "Todos", href: "/todos" },
       { label: "About", href: "/about" },
       { label: "QR Codes", href: "/qr-codes" },
-      { label: "Rules", href: "/rules" },
       { label: "Map", href: "/map" }
       //{ label: "Box erstellen", href: "/private-box"}
     ];

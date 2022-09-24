@@ -5,8 +5,8 @@
     import ShortDescription from "$lib/short_description/ShortDescription.svelte";
     import { ENV_OBJ } from '$lib/env'
     let leaflet;
-    
     let mapElement;
+    let boxes;
     let map;
     let loc = [51.961940, 7.626057];
     let snackbar_val = false;

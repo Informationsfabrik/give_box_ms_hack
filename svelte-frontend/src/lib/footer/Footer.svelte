@@ -1,5 +1,6 @@
 <footer>
-    <p>FOOTER</p>
+    <a href="rules">regeln</a>
+    <a href="about">über givebox</p>
 </footer>
 
 <style>
