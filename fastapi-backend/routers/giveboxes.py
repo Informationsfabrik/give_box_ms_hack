@@ -43,4 +43,4 @@ def post_givebox(box: schemas.Givebox, db: SessionLocal = Depends(get_db)):
     new_box = models.GiveBox(**box.dict())
     db.add(new_box)
     db.commit()
-    return 200
+    return new_box.id
