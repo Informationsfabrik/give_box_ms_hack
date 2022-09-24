@@ -26,6 +26,9 @@ def post_comment(comment :schemas.Comment, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.id == user_id).first()
     box = db.query(models.GiveBox).filter(models.GiveBox.id == box_id).first()
 
+    assert user is not None 
+    assert box is not None
+
     comment = models.Comment(**comment.dict())
     comment.user = user
     comment.box = box
