@@ -2,6 +2,8 @@ version: '3'
 
 volumes:
   data:
+  db-data:
+
 
 services:
   reverse-proxy:
@@ -9,11 +11,12 @@ services:
     image: traefik:v2.8
     # Enables the web UI and tells Traefik to listen to docker
     command:
-      - "--api.insecure=true"
+      # - "--api.insecure=true"
       - "--providers.docker=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-      - "--api"
+      - "--entrypoints.postgres.address=:5432"
+      # - "--api"
       - "--certificatesresolvers.le.acme.tlschallenge=true"
       - "--certificatesresolvers.le.acme.email=thunfischtoast@posteo.de"
       - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
@@ -52,3 +55,24 @@ services:
       - "traefik.http.routers.backend.entrypoints=websecure"
       - "traefik.http.routers.backend.tls=true"
       - "traefik.http.routers.backend.tls.certresolver=le"
+    env_file:
+      - .env
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=givebox
+    env_file:
+      - .env
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data/
+    labels:
+      - "traefik.enable=true"
+      # routers
+      - "traefik.tcp.routers.postgres.rule=HostSNI(`*`)"
+      - "traefik.tcp.routers.postgres.entryPoints=postgres"
+      - "traefik.tcp.routers.postgres.service=postgres"
+      # services (needed for TCP)
+      - "traefik.tcp.services.postgres.loadbalancer.server.port=5432"

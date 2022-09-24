@@ -3,7 +3,7 @@
     import MediaQuery from "$lib/media-query/MediaQuery.svelte";
 
     const getBoxes = async () => {
-		var response = await fetch('http://localhost:8081/giveboxes', { headers: {'mode':'no-cors'}});
+		var response = await fetch('https://api.givebox-ms.de/giveboxes', { headers: {'mode':'no-cors'}});
 		var result = await response.json();
 		return result;
 	}
