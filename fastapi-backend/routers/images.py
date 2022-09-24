@@ -10,7 +10,7 @@ import schemas
 
 router = APIRouter()
 
-IMAGE_DIR : str = "data/images"
+IMAGE_DIR : str = "data/image"
 
 @router.post("/images")
 def post_image(image: schemas.Image, db: SessionLocal = Depends(get_db)):
