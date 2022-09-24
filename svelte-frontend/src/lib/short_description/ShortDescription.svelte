@@ -25,9 +25,16 @@
 
 <short-description>
 {#if description_object}
-    <h1>{description_object?.description}</h1>
+    <h1>{description_object?.title}</h1>
     <div>Typ: {description_object?.is_temporary? "temporär": "dauerhaft"}</div>
-    <div>Beschreibung: {description_object?.description}</div>
+    <div>Adresse: 
+        <div>
+            {description_object?.zip_code}, {description_object?.city}, 
+        </div>
+        <div>
+            {description_object?.street} {description_object?.house_number}
+        </div>
+    </div>
     <div>Öffnungszeiten: {description_object?.opening_hours}</div>
     <br>
     <a href={redirect_url}><Button>Mehr Info</Button></a>

@@ -20,8 +20,8 @@
                 {#each box2 as box}
                 <a href="/box?{box['id']}">
                 <div class="box">
-                    <h4>{box["description"]}</h4>
-                    <p>{box["content"]}</p>
+                    <h4>{box["title"]}</h4>
+                    <p>{box["street"]}</p>
                 </div>
             </a>
                 {/each}
@@ -47,8 +47,8 @@
                 {#each box2 as box}
                 <a href="/box?{box['id']}">
                 <div class="box">
-                    <h4>{box["description"]}</h4>
-                    <p>{box["content"]}</p>
+                    <h4>{box["title"]}</h4>
+                    <p>{box["street"]}</p>
                 </div>
             </a>
                 {/each}
@@ -72,8 +72,8 @@
                 {#each box2 as box}
                 <a href="/box?{box['id']}">
                 <div class="box">
-                    <h4>{box["description"]}</h4>
-                    <p>{box["content"]}</p>
+                    <h4>{box["title"]}</h4>
+                    <p>{box["street"]}</p>
                 </div>
             </a>
                 {/each}
