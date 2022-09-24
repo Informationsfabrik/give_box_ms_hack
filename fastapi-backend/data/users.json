@@ -2,7 +2,16 @@
     {
         "lastname": "Mensing",
         "firstname": "Rainer",
-        "email": "rainer.mensing@hotmail.de",
+        "email": "rmensing@informationsfabrik.de",
+        "password": "#MSHack!",
+        "street": "Hafenweg",
+        "house_number": 16,
+        "zip_code": 48155,
+        "city": "Münster"
+    },    {
+        "lastname": "Shaibe",
+        "firstname": "Vadim",
+        "email": "vshaibe@informationsfabrik.de",
         "password": "#MSHack!",
         "street": "Hafenweg",
         "house_number": 16,
