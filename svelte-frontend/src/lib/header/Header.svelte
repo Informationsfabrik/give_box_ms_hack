@@ -14,6 +14,7 @@
       { label: "QR Codes", href: "/qr-codes" },
       { label: "Rules", href: "/rules" },
       { label: "Map", href: "/map" },
+      { label: "Box erstellen", href: "/private-box"}
     ];
   
     // Mobile menu click event handler
