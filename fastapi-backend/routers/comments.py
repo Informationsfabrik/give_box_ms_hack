@@ -11,7 +11,8 @@ router = APIRouter()
 
 @router.get("/comments/{box_id}")
 def get_comments(box_id:int, db: Session = Depends(get_db)) -> schemas.Comment:
-    comments = db.query(models.Comment).filter(models.Comment.id == box_id)
+
+    comments = db.query(models.Comment).filter(models.Comment.box_id == box_id).all()
 
     return comments
 
