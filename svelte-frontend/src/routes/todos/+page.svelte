@@ -12,7 +12,7 @@
         const formData  = new FormData();
         formData.append('title', title);
         todoList = await fetch('http://127.0.0.1:8081/add', {
-            method: 'POST',
+            method: 'Post',
             body: formData,
         }).then((res) => res.json())
     }
