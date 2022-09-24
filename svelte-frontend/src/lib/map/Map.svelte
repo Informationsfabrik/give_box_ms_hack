@@ -4,7 +4,6 @@
     import { Snackbar, Button, ClickOutside, MaterialApp  } from 'svelte-materialify';
     import ShortDescription from "$lib/short_description/ShortDescription.svelte";
     let leaflet;
-    
     let mapElement;
     let map;
     let loc = [51.961940, 7.626057];
