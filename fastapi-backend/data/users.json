@@ -1,4 +1,14 @@
-[
+[  
+    {
+        "lastname": "Römer",
+        "firstname": "Christian",
+        "email": "croemer@informationsfabrik.de",
+        "password": "#MSHack!",
+        "street": "Hafenweg",
+        "house_number": 16,
+        "zip_code": 48155,
+        "city": "Münster"
+    },
     {
         "lastname": "Mensing",
         "firstname": "Rainer",
@@ -8,7 +18,8 @@
         "house_number": 16,
         "zip_code": 48155,
         "city": "Münster"
-    },    {
+    },    
+    {
         "lastname": "Shaibe",
         "firstname": "Vadim",
         "email": "vshaibe@informationsfabrik.de",

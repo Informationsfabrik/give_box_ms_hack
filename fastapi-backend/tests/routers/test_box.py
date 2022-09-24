@@ -1,4 +1,4 @@
-from routers.box import get_givebox_by_id, get_givebox_list
+from routers.giveboxes import get_givebox_by_id, get_givebox_list
 from utils import get_db
 import schemas
 from typing import List

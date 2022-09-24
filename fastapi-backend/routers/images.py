@@ -1,4 +1,5 @@
 import os
+from tkinter import Image
 from database import SessionLocal
 from fastapi import APIRouter, Depends
 from typing import List
@@ -9,7 +10,7 @@ import schemas
 
 router = APIRouter()
 
-IMAGE_DIR : str = "data/images"
+IMAGE_DIR : str = "data/image"
 
 @router.post("/images")
 def post_image(image: schemas.Image, db: SessionLocal = Depends(get_db)):
@@ -51,3 +52,26 @@ def post_image(image: schemas.Image, db: SessionLocal = Depends(get_db)):
 
 
     return image.id
+
+
+@router.get("/titleimages/{box_id}")
+def get_title_image_by_box_id(box_id: int, db: Session = Depends(get_db)) -> schemas.Image:
+
+    db_image = db.query(models.Image).filter(models.Image.box_id == box_id).filter(models.Image.is_title_image == True).first()
+    image_dict = db_image.__dict__
+    
+    path = image_dict["path"]
+
+    with open(path, "rb") as binary_file:
+
+        print(binary_file)
+        # Write bytes to file
+        data = binary_file.read()
+
+    image = schemas.Image(**image_dict)
+    image.data = data
+
+
+
+
+    return image
