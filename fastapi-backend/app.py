@@ -61,5 +61,4 @@ app.include_router(images.router, tags=["Images"])
 if __name__ == "__main__":
     import uvicorn
 
-    app.root_path = ""
     uvicorn.run(app=app, host="127.0.0.1", port=8081, debug=True)
