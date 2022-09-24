@@ -46,7 +46,7 @@ class Givebox(GiveboxBase):
     house_number: Optional[int]
     zip_code: Optional[int]
     city: Optional[str]
-    maintainers : Optional[List[User]]
+    maintainers : List[User] = []
 
 class Comment(BaseModel):
     user: User
