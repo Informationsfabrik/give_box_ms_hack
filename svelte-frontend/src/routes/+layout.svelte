@@ -68,9 +68,12 @@
             <ResultList boxList={boxes} />
         {/await}
     </div>
-    <div class="map-section">
-        <Map />
-    </div>
+
+    {#await getBoxes() then boxes}
+        <div class="map-section">
+            <Map boxList={boxes} />
+        </div>
+    {/await}
 </div>
 
 <!-- <main>

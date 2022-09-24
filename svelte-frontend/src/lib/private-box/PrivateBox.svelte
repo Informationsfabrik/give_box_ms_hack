@@ -118,7 +118,7 @@
 	</div>
     <ImageUpload />
 	<div>
-		<p>Durch hinzufügen deiner Box stimmst du unseren Bedingungen zu.<a href="#">AGB's</a>.</p>
+		<p>Durch hinzufügen deiner Box stimmst du unseren Bedingungen zu. <a href="#">AGB's</a>.</p>
 		<button type="submit" class="private-box-creation">Private Box erstellen</button>
 	</div>
 </form>

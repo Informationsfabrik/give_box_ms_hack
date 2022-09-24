@@ -8,8 +8,8 @@
         <img src="/regal.svg" alt="Regal" />
     </div>
     <div class="entry">
-        <h3>{box.description}</h3>
-        <!--<address>{box.street} {box.house_number} {box.zip_code} {box.city}</address>-->
+        <h3>{box.title}</h3>
+        <address>{box.street} {box.house_number} {box.zip_code} {box.city}</address>
         <span>offen: {box.opening_hours}</span>
         <ul class="tags">
             {#each Object.entries(box.content) as [key, value]}

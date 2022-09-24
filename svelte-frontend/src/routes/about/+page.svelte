@@ -1,7 +1,3 @@
-<script lang="ts">
-    import Box from "$lib/ResultBox.svelte";
-</script>
-
 <h1>Münster's Givebox-Network</h1>
 
 <p>

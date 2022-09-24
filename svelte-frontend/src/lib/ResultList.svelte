@@ -3,14 +3,6 @@
     import { beforeUpdate, afterUpdate } from 'svelte';
 
     export let boxList;
-    console.log("ResultList log:");
-    console.log(boxList);
-
-    beforeUpdate(() => {
-		console.log(boxList)
-	});
-    
-    
 </script>
 
 <div class="boxes">
