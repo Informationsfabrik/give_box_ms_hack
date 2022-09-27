@@ -1,17 +1,11 @@
 FROM python:3.10
 
-WORKDIR /code
+WORKDIR /code/app
 
-COPY ./requirements.txt /code/requirements.txt
-
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install uvicorn fastapi alembic tenacity sqlalchemy psycopg2
 
 COPY ./ /code/app
 
-WORKDIR /code/app
-
 EXPOSE 80
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "80"]
-
-# If running behind a proxy like Nginx or Traefik add --proxy-headers
-# CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--proxy-headers"]
+CMD ["bash", "start.sh"]
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80", "--proxy-headers", "--reload"]

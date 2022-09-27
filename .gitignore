@@ -1,3 +1,5 @@
 letsencrypt
 .idea
 .env
+db_data
+internal_data

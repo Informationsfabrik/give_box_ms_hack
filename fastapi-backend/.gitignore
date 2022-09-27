@@ -189,5 +189,4 @@ fabric.properties
 
 *.sqlite
 
-
-data/images
+env

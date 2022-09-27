@@ -1,0 +1,61 @@
+version: '3'
+
+volumes:
+  internal_data:
+  db_data:
+
+
+services:
+  reverse-proxy:
+    # The official v2 Traefik docker image
+    image: traefik:v2.8
+    # Enables the web UI and tells Traefik to listen to docker
+    command:
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.postgres.address=:5432"
+    ports:
+      # The HTTP port
+      - "80:80"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  frontend:
+    build: svelte-frontend
+    command: npm run dev
+    volumes:
+      - ./svelte-frontend/src:/app/src
+    labels:
+      - "traefik.http.routers.frontend.rule=Host(`www.${HOST}`) || Host(`${HOST}`)"
+      - "traefik.http.routers.frontend.entrypoints=web"
+
+  backend:
+    build: fastapi-backend
+    volumes:
+      - internal_data:/code/app/internal_data
+      - ./fastapi-backend:/code/app
+    labels:
+      - "traefik.http.routers.backend.rule=Host(`api.${HOST}`)"
+      - "traefik.http.routers.backend.entrypoints=web"
+    env_file:
+      - .env
+    environment:
+      - DEV=1
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+    labels:
+      - "traefik.enable=true"
+      # routers
+      - "traefik.tcp.routers.postgres.rule=HostSNI(`*`)"
+      - "traefik.tcp.routers.postgres.entryPoints=postgres"
+      - "traefik.tcp.routers.postgres.service=postgres"
+      # services (needed for TCP)
+      - "traefik.tcp.services.postgres.loadbalancer.server.port=5432"

@@ -26,7 +26,7 @@
     });
 
     const getBoxes = async () => {
-        var response = await fetch('https://api.givebox-ms.de/giveboxes', { headers: {'mode':'no-cors'}});
+        var response = await fetch('http://api.localhost/giveboxes', { headers: {'mode':'no-cors'}});
         var result = await response.json();
         console.log("getBoxes log:");
         console.log(result);
