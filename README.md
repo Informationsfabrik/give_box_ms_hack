@@ -9,7 +9,7 @@ Setup a database
 Inside fastapi-backend dir
 1. Create venv `virtualenv -p python3.11 .venv && source .venv/bin/activate`
 2. `pip install -r requirements.txt` (or use requirements.in if there are issue with versions on your system)
-3. run `bash start.sh` (sets up the database and runs the app with uvicorn)
+3. run `export DEV=1; ./start.sh` (sets up the database and runs the app with uvicorn)
 4. Checkout entrypoints http://127.0.0.1:8081/docs
 
 Inside svelte-frontend dir
