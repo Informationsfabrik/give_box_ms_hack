@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { ENV_OBJ } from '$lib/env'
     import Header from '$lib/header/Header.svelte';
     //import Footer from '$lib/footer/Footer.svelte';
     import { onMount } from 'svelte';
@@ -26,7 +27,7 @@
     });
 
     const getBoxes = async () => {
-        var response = await fetch('https://api.givebox-ms.de/giveboxes', { headers: {'mode':'no-cors'}});
+        var response = await fetch(ENV_OBJ.API_URL + '/giveboxes', { headers: {'mode':'no-cors'}});
         var result = await response.json();
         console.log("getBoxes log:");
         console.log(result);

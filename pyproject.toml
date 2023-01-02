@@ -1,0 +1,41 @@
+# Common formatters
+[tool.isort]
+ensure_newline_before_comments = true
+line_length = 120
+force_single_line = true
+profile = "black"
+src_paths= "fastapi-backend"
+
+[tool.black]
+line-length = 120
+target_version = ["py311"]
+
+[tool.docformatter]
+wrap-summaries = 120
+wrap-descriptions = 120
+in-place = true
+
+# Other Python hooks
+[tool.flake8]
+max-line-length = 120
+extend-ignore = "E203, B001, W503, ANN002, ANN003, ANN101, ANN102, D103, D106, D100, D101, R504, S608"
+per-file-ignores = "tests/test_*:D, ANN2, */__init__.py:D104"
+exclude = ".git, __pycache__, .mypy_cache, .pytest_cache, .venv, .cache, test/"
+docstring-convention = "google"
+mypy-init-return = "true"
+count = "true"
+
+[tool.mypy]
+python_version = "3.11"
+cache_dir = "/dev/null"
+ignore_missing_imports = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_unreachable = true
+show_error_context = true
+show_column_numbers = true
+show_error_codes = true
+local_partial_types = true

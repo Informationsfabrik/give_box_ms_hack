@@ -1,30 +1,17 @@
-Inside fastapi-backend dir
-1. Create venv
-2. pip install requirements.txt
-3. run -> uvicorn app:app --reload --port 8081
-4. Checkout entpoints http://127.0.0.1:8081/docs
-
-Inside svelte-frontend dir
-1. npm install
-3. run -> npm run dev -- --open --port 8082
-
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+Münster’s Givebox-Network – Wir eröffnen für Giveboxen in Münster eine digitale Community und schaffen einfachen digitalen Zugang zu Infos, Events und Austausch mit Nutzern und Paten.
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+Setup a database
+1. Create an .env file with at minimum POSTGRES_HOST_AUTH_METHOD=trust or POSTGRES_PASSWORD=foobar
+2. Start the database `docker-compose up postgres`
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+Inside fastapi-backend dir
+1. Create venv `virtualenv -p python3.11 .venv && source .venv/bin/activate`
+2. `pip install -r requirements.txt` (or use requirements.in if there are issue with versions on your system)
+3. run `export DEV=1; ./start.sh` (sets up the database and runs the app with uvicorn)
+4. Checkout entrypoints http://127.0.0.1:8081/docs
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+Inside svelte-frontend dir
+1. `npm install`
+2. run `npm run dev -- --open`

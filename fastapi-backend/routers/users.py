@@ -1,38 +1,37 @@
-from database import SessionLocal
-from fastapi import APIRouter, Depends
-from fastapi_jwt_auth import AuthJWT
 from typing import List
+
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi.exceptions import HTTPException
 from sqlalchemy.orm import Session
-from utils import get_db
+
 import models
 import schemas
+from database import SessionLocal
+from utils import get_db
 
 router = APIRouter()
 
 
 @router.get("/users/{id_}")
-def get_user_by_id(
-    id_: int, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()
-) -> schemas.User:
-    # Authorize.jwt_required()
+def get_user_by_id(id_: int, db: Session = Depends(get_db)) -> schemas.User:
 
     user = db.query(models.User).filter(models.User.id == id_).first()
 
-    return schemas.User(user)
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    return models.User(**user.__dict__)
 
 
 @router.get("/users")
-def get_user(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()
-) -> List[schemas.UserBase]:
-    # Authorize.jwt_required()
+def get_user(db: Session = Depends(get_db)) -> List[models.User]:
 
-    users = db.query(models.User)
-    users = [schemas.GiveboxBase(user) for user in users]
+    return db.query(models.User).all()
 
-    return users
 
 @router.post("/users")
-def add_user(user: schemas.User, db: SessionLocal = Depends(get_db)):
+def add_user(user: schemas.User, db: SessionLocal = Depends(get_db)) -> int:
     new_user = models.User(**user.__dict__)
     db.add(new_user)
     db.commit()

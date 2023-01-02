@@ -1,9 +1,12 @@
 from datetime import datetime
-from pydantic import BaseModel, Json
-from typing import Optional, List 
+from typing import List
+from typing import Optional
+
+from pydantic import BaseModel
+
 
 class UserBase(BaseModel):
-    id: Optional[int]
+    id: Optional[int]  # noqa: A003
     lastname: Optional[str]
     firstname: Optional[str]
 
@@ -26,7 +29,7 @@ class Content(BaseModel):
 
 
 class GiveboxBase(BaseModel):
-    id: Optional[int]
+    id: Optional[int]  # noqa: A003
     longitude: float
     latitude: float
     is_temporary: Optional[bool]
@@ -40,13 +43,15 @@ class GiveboxBase(BaseModel):
     zip_code: Optional[int]
     city: Optional[str]
 
+
 class Givebox(GiveboxBase):
     maintenance_needed: Optional[bool]
     maintainer_info: Optional[str]
     description: Optional[str]
     last_confirmation_date: Optional[datetime]
     image_id: Optional[str]
-    maintainers : List[User] = []
+    maintainers: List[User] = []
+
 
 class Comment(BaseModel):
     user_id: Optional[int]
@@ -55,6 +60,7 @@ class Comment(BaseModel):
     box: Optional[Givebox]
     text: Optional[str]
     timestamp: Optional[datetime]
+
 
 class Image(BaseModel):
     box_id: Optional[int]
