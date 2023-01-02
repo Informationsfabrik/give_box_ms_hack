@@ -29,9 +29,9 @@
         if(browser) {
             leaflet = (await import('leaflet')).default;
 
-            map = leaflet.map(mapElement).setView([51.961940, 7.626057], 14);
+            map = leaflet.map(mapElement).setView([51.961940, 7.626057], 13);
 
-            leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            leaflet.tileLayer('https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
