@@ -1,20 +1,20 @@
 from typing import List
 
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi.exceptions import HTTPException
+from sqlalchemy.orm import Session
+
 import models
 import schemas
 from database import SessionLocal
-from fastapi import APIRouter, Depends
-from fastapi.exceptions import HTTPException
-from sqlalchemy.orm import Session
 from utils import get_db
 
 router = APIRouter()
 
 
 @router.get("/users/{id_}")
-def get_user_by_id(
-    id_: int, db: Session = Depends(get_db)
-) -> schemas.User:
+def get_user_by_id(id_: int, db: Session = Depends(get_db)) -> schemas.User:
 
     user = db.query(models.User).filter(models.User.id == id_).first()
 
@@ -25,15 +25,13 @@ def get_user_by_id(
 
 
 @router.get("/users")
-def get_user(
-    db: Session = Depends(get_db)
-) -> List[models.User]:
+def get_user(db: Session = Depends(get_db)) -> List[models.User]:
 
     return db.query(models.User).all()
 
 
 @router.post("/users")
-def add_user(user: schemas.User, db: SessionLocal = Depends(get_db)):
+def add_user(user: schemas.User, db: SessionLocal = Depends(get_db)) -> int:
     new_user = models.User(**user.__dict__)
     db.add(new_user)
     db.commit()

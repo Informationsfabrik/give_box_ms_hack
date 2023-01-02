@@ -1,12 +1,14 @@
 import os
 from pathlib import Path
 
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi.exceptions import HTTPException
+from sqlalchemy.orm import Session
+
 import models
 import schemas
 from database import SessionLocal
-from fastapi import APIRouter, Depends
-from fastapi.exceptions import HTTPException
-from sqlalchemy.orm import Session
 from utils import get_db
 
 router = APIRouter()
@@ -15,7 +17,7 @@ IMAGE_DIR: str = "data/images"
 
 
 @router.post("/images")
-def post_image(image: schemas.Image, db: SessionLocal = Depends(get_db)):
+def post_image(image: schemas.Image, db: SessionLocal = Depends(get_db)) -> int:
 
     image_dict = image.__dict__
     box_id = image_dict["box_id"]
@@ -25,9 +27,7 @@ def post_image(image: schemas.Image, db: SessionLocal = Depends(get_db)):
     assert box_id is not None
     assert data is not None
 
-    box: models.GiveBox = (
-        db.query(models.GiveBox).filter(models.GiveBox.id == box_id).first()
-    )
+    box: models.GiveBox = db.query(models.GiveBox).filter(models.GiveBox.id == box_id).first()
 
     assert box is not None
 
@@ -57,11 +57,9 @@ def post_image(image: schemas.Image, db: SessionLocal = Depends(get_db)):
 
 
 @router.get("/titleimages/{box_id}")
-def get_title_image_by_box_id(
-    box_id: int, db: Session = Depends(get_db)
-) -> schemas.Image:
+def get_title_image_by_box_id(box_id: int, db: Session = Depends(get_db)) -> schemas.Image:
     db_image = (
-        db.query(models.Image)
+        db.query(models.Image)  # fmt: skip
         .filter(models.Image.box_id == box_id)
         .filter(models.Image.is_title_image is True)
         .first()

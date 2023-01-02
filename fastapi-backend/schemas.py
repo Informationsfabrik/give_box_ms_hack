@@ -1,11 +1,12 @@
 from datetime import datetime
-from typing import List, Optional
+from typing import List
+from typing import Optional
 
 from pydantic import BaseModel
 
 
 class UserBase(BaseModel):
-    id: Optional[int]
+    id: Optional[int]  # noqa: A003
     lastname: Optional[str]
     firstname: Optional[str]
 
@@ -28,7 +29,7 @@ class Content(BaseModel):
 
 
 class GiveboxBase(BaseModel):
-    id: Optional[int]
+    id: Optional[int]  # noqa: A003
     longitude: float
     latitude: float
     is_temporary: Optional[bool]

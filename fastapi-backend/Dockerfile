@@ -1,11 +1,11 @@
-FROM python:3.10
+FROM python:3.11
 
-WORKDIR /code/app
+WORKDIR /app
 
-RUN pip install uvicorn fastapi alembic tenacity sqlalchemy psycopg2
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-COPY ./ /code/app
+COPY . .
 
 EXPOSE 80
 CMD ["bash", "start.sh"]
-# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80", "--proxy-headers", "--reload"]

@@ -1,14 +1,12 @@
-from sqlalchemy import (
-    JSON,
-    Boolean,
-    Column,
-    DateTime,
-    Float,
-    ForeignKey,
-    Integer,
-    String,
-    Table,
-)
+from sqlalchemy import JSON
+from sqlalchemy import Boolean
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import Float
+from sqlalchemy import ForeignKey
+from sqlalchemy import Integer
+from sqlalchemy import String
+from sqlalchemy import Table
 from sqlalchemy.orm import relationship
 
 from database import Base
@@ -23,7 +21,7 @@ user_givebox_association = Table(
 
 class User(Base):
     __tablename__ = "Users"
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)  # noqa: A003
     email = Column(String)
     password = Column(String)
     firstname = Column(String)
@@ -32,14 +30,12 @@ class User(Base):
     house_number = Column(Integer)
     zip_code = Column(Integer)
     city = Column(String)
-    maintained_boxes = relationship(
-        "GiveBox", secondary=user_givebox_association, back_populates="maintainers"
-    )
+    maintained_boxes = relationship("GiveBox", secondary=user_givebox_association, back_populates="maintainers")
 
 
 class GiveBox(Base):
     __tablename__ = "GiveBoxes"
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)  # noqa: A003
     longitude = Column(Float)
     latitude = Column(Float)
     opening_hours = Column(String)
@@ -56,14 +52,12 @@ class GiveBox(Base):
     house_number = Column(Integer)
     zip_code = Column(Integer)
     city = Column(String)
-    maintainers = relationship(
-        "User", secondary=user_givebox_association, back_populates="maintained_boxes"
-    )
+    maintainers = relationship("User", secondary=user_givebox_association, back_populates="maintained_boxes")
 
 
 class Comment(Base):
     __tablename__ = "Comments"
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)  # noqa: A003
     box_id = Column(Integer, ForeignKey("GiveBoxes.id"))
     box = relationship("GiveBox")
     user_id = Column(Integer, ForeignKey("Users.id"))
@@ -75,7 +69,7 @@ class Comment(Base):
 
 class Image(Base):
     __tablename__ = "Images"
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)  # noqa: A003
     box_id = Column(Integer, ForeignKey("GiveBoxes.id"))
     box = relationship("GiveBox")
     path = Column(String)

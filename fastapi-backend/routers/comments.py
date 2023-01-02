@@ -1,10 +1,13 @@
 from datetime import datetime
-from fastapi import APIRouter, Depends
+from typing import List
+
+from fastapi import APIRouter
+from fastapi import Depends
 from sqlalchemy.orm import Session
-from utils import get_db
+
 import models
 import schemas
-from typing import List
+from utils import get_db
 
 router = APIRouter()
 
@@ -18,7 +21,7 @@ def get_comments(box_id: int, db: Session = Depends(get_db)) -> List[schemas.Com
 
 
 @router.post("/comments")
-def post_comment(comment: schemas.Comment, db: Session = Depends(get_db)):
+def post_comment(comment: schemas.Comment, db: Session = Depends(get_db)) -> int:
 
     comment_dict = comment.dict()
     user_id = comment_dict["user_id"]

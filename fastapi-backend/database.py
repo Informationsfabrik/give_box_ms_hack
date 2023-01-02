@@ -1,14 +1,21 @@
-import os
+from os import getenv
 
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
-print(f"Trying DB: {os.getenv('POSTGRES_DB', None)}", flush=True)
+def get_sqlalchemy_url() -> str:
+    user = getenv("POSTGRES_USER", "postgres")
+    password = getenv("POSTGRES_PASSWORD")
+    host = getenv("POSTGRES_HOST", "postgres")
+    port = getenv("POSTGRES_PORT", 5432)
+    db = getenv("POSTGRES_DB", "postgres")
+    print(f"postgresql+psycopg2://{user}:******@{host}:{port}/{db}")
+    return f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{db}"
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@postgres:5432/{os.getenv('POSTGRES_DB')}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True)
+
+engine = create_engine(get_sqlalchemy_url(), pool_pre_ping=True)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
